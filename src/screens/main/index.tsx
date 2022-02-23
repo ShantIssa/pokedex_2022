@@ -1,13 +1,12 @@
 import React from 'react';
-import {Text} from 'react-native';
-import {SafeAreaView} from 'react-native-safe-area-context';
+import { Text } from 'react-native';
 
-import {Wrapper} from '../../components';
+import { Wrapper } from 'src/components';
 
 const Main = () => (
-  <Wrapper>
-    <Text>Pokedex</Text>
-  </Wrapper>
+    <Wrapper>
+        <Text>Pokedex</Text>
+    </Wrapper>
 );
 
 export default Main;
