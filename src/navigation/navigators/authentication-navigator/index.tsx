@@ -44,9 +44,13 @@ const AuthenticationStackNavigator = () => {
         <Tab.Navigator
             initialRouteName={ScreenRoutes.Main}
             screenOptions={({ route }) => ({
-                headerShown: false,
+                headerShown: true,
+                headerTitleAlign: 'left',
+                headerTitle: 'Pokédex',
                 tabBarBounces: false,
                 tabBarShowLabel: false,
+                headerShadowVisible: false,
+                headerLeftLabelVisible: true,
                 tabBarStyle: styles.tabBarStyle,
                 tabBarActiveTintColor: activeColor,
                 tabBarInactiveTintColor: inactiveColor,
