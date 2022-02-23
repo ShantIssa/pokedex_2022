@@ -1,4 +1,5 @@
 export const QUERY_KEYS = {
-    GetAllPokemons: 'pokemon?offset=0&limit=898',
+    GetPokemons: 'pokemon?limit=$40',
+    GetPokemonId: 'pokemon/',
     GetAllPokemonsViaGender: 'gender/',
 } as const;

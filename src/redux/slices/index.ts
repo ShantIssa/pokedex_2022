@@ -1,6 +1,6 @@
 import { persistReducer } from 'redux-persist';
 import { combineReducers } from '@reduxjs/toolkit';
-import { AsyncStorage } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import user from './user/slice';
 
