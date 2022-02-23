@@ -22,7 +22,6 @@ DerivedData
 
 # Android/IntelliJ
 #
-build/
 .idea
 .gradle
 local.properties
@@ -64,3 +63,7 @@ buck-out/
 .env.build
 .env.development
 .env.production
+
+node_modules/
+
+
