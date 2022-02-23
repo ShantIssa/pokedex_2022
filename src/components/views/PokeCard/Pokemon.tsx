@@ -1,20 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import ImageColors from 'react-native-image-colors';
-import { ActivityIndicator, View } from 'react-native';
+import { ActivityIndicator } from 'react-native';
 
 import { Typography } from 'src/components';
 import { getPokemonById } from 'src/services/api/pokemons';
 
-import { PokemonViewType } from './types';
+import { CardColors, PokemonViewType } from './types';
 import { Card, PokemonImg } from './styles';
 
-const initialState = {
-    rawResult: '',
-};
-
 const Pokemon: React.FC<PokemonViewType> = ({ name, id }) => {
-    const [color, setColor] = useState<string>('transparent');
+    const [colors, setColor] = useState<CardColors>({ background: 'transparent', border: 'transparent' });
     const [loading, setLoading] = useState(true);
     const { data, isLoading } = useQuery(id, getPokemonById);
     const pokemonImg = data?.sprites?.other['official-artwork']?.front_default;
@@ -31,16 +27,24 @@ const Pokemon: React.FC<PokemonViewType> = ({ name, id }) => {
                         authorization: 'Basic 123',
                     },
                 });
-
                 switch (result.platform) {
                     case 'android':
-                        setColor(result.dominant || 'transparent');
+                        setColor({
+                            border: result.darkMuted || 'transparent',
+                            background: result.dominant || 'transparent',
+                        });
                         break;
                     case 'web':
-                        setColor(result.dominant || 'transparent');
+                        setColor({
+                            border: result.darkMuted || 'transparent',
+                            background: result.dominant || 'transparent',
+                        });
                         break;
                     case 'ios':
-                        setColor(result.background || 'transparent');
+                        setColor({
+                            border: result.background || 'transparent',
+                            background: result.secondary || 'transparent',
+                        });
                         break;
                     default:
                         throw new Error('Unexpected platform');
@@ -56,11 +60,9 @@ const Pokemon: React.FC<PokemonViewType> = ({ name, id }) => {
     return isLoading || loading ? (
         <ActivityIndicator />
     ) : (
-        <Card color={color}>
-            <View>
-                <Typography>{name}</Typography>
-                {pokemonImg && <PokemonImg source={{ uri: pokemonImg }} />}
-            </View>
+        <Card colors={colors}>
+            <Typography>{name}</Typography>
+            {pokemonImg && <PokemonImg source={{ uri: pokemonImg }} />}
         </Card>
     );
 };

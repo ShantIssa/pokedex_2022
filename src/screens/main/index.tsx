@@ -1,12 +1,12 @@
 import React from 'react';
-import { ActivityIndicator, FlatList, RefreshControl } from 'react-native';
+import { ActivityIndicator, FlatList, RefreshControl, View } from 'react-native';
 import { useInfiniteQuery } from 'react-query';
 
-import { PokeCard, Wrapper } from 'src/components';
+import { PokeCard, Typography } from 'src/components';
 import { getPokemons } from 'src/services/api/pokemons';
 
 const Main = () => {
-    const { data, error, fetchNextPage, hasNextPage, isLoading, isError, isRefetching, refetch } = useInfiniteQuery(
+    const { data, fetchNextPage, hasNextPage, isLoading, isRefetching, refetch, isError } = useInfiniteQuery(
         'pokemons',
         getPokemons,
         {
@@ -16,21 +16,22 @@ const Main = () => {
     );
 
     return (
-        <Wrapper>
-            {isLoading ? (
+        <View>
+            {isLoading || isError ? (
                 <ActivityIndicator />
             ) : (
                 <FlatList
                     data={data?.pages}
-                    onEndReachedThreshold={0.3}
-                    keyExtractor={(item) => item.name}
+                    onEndReachedThreshold={0.4}
                     showsVerticalScrollIndicator={false}
                     onEndReached={() => fetchNextPage()}
+                    keyExtractor={(i, index) => String(index)}
                     renderItem={({ item, index }) => <PokeCard key={`page-${index}`} pokemons={item.results} />}
-                    refreshControl={<RefreshControl refreshing={isRefetching} onRefresh={refetch} />}
+                    refreshControl={<RefreshControl refreshing={isRefetching} onRefresh={() => refetch()} />}
                 />
             )}
-        </Wrapper>
+            {!hasNextPage && <Typography>You can't load more</Typography>}
+        </View>
     );
 };
 

@@ -4,7 +4,7 @@ import { useTheme } from 'styled-components/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { Main, Settings } from 'src/screens';
-import { SaveRed, Save, HomeRed, Home } from 'src/assets/icons';
+import { Home, HomeRed, Save, SaveRed } from 'src/assets/icons';
 
 import { styles } from './styles';
 
@@ -49,8 +49,10 @@ const AuthenticationStackNavigator = () => {
                 headerTitle: 'Pokédex',
                 tabBarBounces: false,
                 tabBarShowLabel: false,
+                headerStyle: styles.header,
                 headerShadowVisible: false,
                 headerLeftLabelVisible: true,
+                headerTitleStyle: styles.title,
                 tabBarStyle: styles.tabBarStyle,
                 tabBarActiveTintColor: activeColor,
                 tabBarInactiveTintColor: inactiveColor,

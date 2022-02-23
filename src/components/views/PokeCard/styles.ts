@@ -1,9 +1,14 @@
 import styled from 'styled-components/native';
 import { Image } from 'react-native';
 
-export const Card = styled.View<{ color: string }>`
-  background-color: ${({ color }) => color};
-  margin-bottom: 10px;
+import { CardColors } from './types';
+
+export const Card = styled.View<{ colors: CardColors }>`
+  background-color: ${({ colors }) => colors.background};
+  height: 450px;
+  width: 100%;
+  border-bottom-color: ${({ colors }) => colors.border};
+  border-bottom-width: 3px;
 `;
 
 export const PokemonImg = styled(Image)`

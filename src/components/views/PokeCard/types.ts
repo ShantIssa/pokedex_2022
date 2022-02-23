@@ -10,3 +10,7 @@ export type PokemonViewType = {
 export type PokeCardProps = {
     pokemons: PokemonType[];
 };
+export type CardColors = {
+    background: string;
+    border: string;
+};
