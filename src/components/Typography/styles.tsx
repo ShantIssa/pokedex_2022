@@ -36,20 +36,12 @@ export const StyledText = styled.Text<TypographyStyleProps>`
         return `color: ${theme.colors.primary}`;
       case 'secondary':
         return `color: ${theme.colors.secondary}`;
-      case 'highlight-red':
-        return `color: ${theme.colors['highlight-red']}`;
-      case 'highlight-gold':
-        return `color: ${theme.colors['highlight-gold']}`;
-      case 'highlight-green':
-        return `color: ${theme.colors['highlight-green']}`;
       case 'light':
         return `color: ${theme.colors.light}`;
       case 'muted':
         return `color: ${theme.colors.light}; opacity: 0.5`;
       case 'dark':
         return `color: ${theme.colors.dark}`;
-      case 'colour-light':
-        return `color: ${theme.colors['colour-light']}`;
       default:
         return `color: ${theme?.colors?.light}`;
     }
