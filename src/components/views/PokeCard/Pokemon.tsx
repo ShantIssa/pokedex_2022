@@ -1,68 +1,40 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useQuery } from 'react-query';
-import ImageColors from 'react-native-image-colors';
-import { ActivityIndicator } from 'react-native';
+import { ActivityIndicator, View } from 'react-native';
 
-import { Typography } from 'src/components';
+import { useImageColors } from 'src/hooks';
+import { Flex, Typography } from 'src/components';
 import { getPokemonById } from 'src/services/api/pokemons';
 
-import { CardColors, PokemonViewType } from './types';
-import { Card, PokemonImg } from './styles';
+import { PokemonViewType } from './types';
+import { Card, PokemonImg, WhiteCard } from './styles';
 
 const Pokemon: React.FC<PokemonViewType> = ({ name, id }) => {
-    const [colors, setColor] = useState<CardColors>({ background: 'transparent', border: 'transparent' });
-    const [loading, setLoading] = useState(true);
     const { data, isLoading } = useQuery(id, getPokemonById);
     const pokemonImg = data?.sprites?.other['official-artwork']?.front_default;
 
-    useEffect(() => {
-        const fetchColors = async () => {
-            if (!isLoading) {
-                const result = await ImageColors.getColors(pokemonImg, {
-                    fallback: '#000000',
-                    quality: 'highest',
-                    pixelSpacing: 5,
-                    cache: true,
-                    headers: {
-                        authorization: 'Basic 123',
-                    },
-                });
-                switch (result.platform) {
-                    case 'android':
-                        setColor({
-                            border: result.darkMuted || 'transparent',
-                            background: result.dominant || 'transparent',
-                        });
-                        break;
-                    case 'web':
-                        setColor({
-                            border: result.darkMuted || 'transparent',
-                            background: result.dominant || 'transparent',
-                        });
-                        break;
-                    case 'ios':
-                        setColor({
-                            border: result.background || 'transparent',
-                            background: result.secondary || 'transparent',
-                        });
-                        break;
-                    default:
-                        throw new Error('Unexpected platform');
-                }
-
-                setLoading(false);
-            }
-        };
-
-        fetchColors();
-    }, [isLoading, pokemonImg]);
-
-    return isLoading || loading ? (
+    const { picLoading, colors } = useImageColors(pokemonImg);
+    return isLoading || picLoading ? (
         <ActivityIndicator />
     ) : (
-        <Card colors={colors}>
-            <Typography>{name}</Typography>
+        <Card background={colors.background}>
+            <Flex marginString="12px">
+                <Typography
+                    color="light"
+                    type="h1-small"
+                    fontFamily="bold"
+                    textAlign="center"
+                    textTransform="capitalize"
+                >
+                    {name}
+                </Typography>
+            </Flex>
             {pokemonImg && <PokemonImg source={{ uri: pokemonImg }} />}
+            <WhiteCard>
+                <Typography type="h1-small" fontFamily="bold" textAlign="center" textTransform="capitalize">
+                    {name}
+                </Typography>
+            </WhiteCard>
         </Card>
     );
 };

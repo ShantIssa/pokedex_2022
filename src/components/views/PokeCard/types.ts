@@ -12,5 +12,4 @@ export type PokeCardProps = {
 };
 export type CardColors = {
     background: string;
-    border: string;
 };

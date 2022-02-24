@@ -1,17 +1,31 @@
 import styled from 'styled-components/native';
 import { Image } from 'react-native';
 
-import { CardColors } from './types';
-
-export const Card = styled.View<{ colors: CardColors }>`
-  background-color: ${({ colors }) => colors.background};
-  height: 450px;
-  width: 100%;
-  border-bottom-color: ${({ colors }) => colors.border};
-  border-bottom-width: 3px;
+export const Card = styled.View<{ background: string }>`
+  background-color: ${({ background }) => background};
+  height: 640px;
+  width: 95%;
+  margin: 10px 0;
+  border-color: white;
+  align-self: center;
+  border-radius: 9px;
 `;
 
 export const PokemonImg = styled(Image)`
-  height: 200px;;
-  width: 200px
+  height: 190px;
+  width: 190px;
+  top: 50px;
+  align-self: center;
+  z-index: 1;
+`;
+
+export const WhiteCard = styled.View`
+  border-radius: 9px;
+  width: 95%;
+  flex: 1;
+  margin-bottom: 10px;
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+  background-color: ${({ theme }) => theme.colors.light};
 `;
