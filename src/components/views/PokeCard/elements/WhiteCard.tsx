@@ -5,9 +5,8 @@ import { Flex, Typography } from 'src/components';
 import { WhiteCardProps } from '../types';
 import { PokemonColorText, WhiteCardWrapper, LinesFlex, TagCard } from '../styles';
 
-const WhiteCard: React.FC<WhiteCardProps> = ({ height, name, weight, colors, abilities, types }) => {
-    console.log(abilities);
-
+const WhiteCard: React.FC<WhiteCardProps> = ({ averageStrength, height, name, weight, colors, abilities, types }) => {
+    console.log(averageStrength, 'averageStrength');
     const abilitiesRenderer = abilities.map(({ slot, ability }: any) => {
         return (
             <Typography key={slot} textTransform="capitalize" type="h3">
@@ -37,6 +36,11 @@ const WhiteCard: React.FC<WhiteCardProps> = ({ height, name, weight, colors, abi
                     </PokemonColorText>
                 </Flex>
             </Flex>
+            <Flex marginString="8px 0">
+                <Typography type="h3" fontFamily="semiBold">
+                    Avg strength: {averageStrength}
+                </Typography>
+            </Flex>
             <Flex width="290px" flexDirection="row" marginString="12px 0 0 0" justifyContent="space-between">
                 <Flex>
                     <Typography type="bodyLarge" fontFamily="semiBold">
@@ -57,11 +61,11 @@ const WhiteCard: React.FC<WhiteCardProps> = ({ height, name, weight, colors, abi
                     {abilitiesRenderer}
                 </Flex>
             </Flex>
-            <Flex marginString="12px 38px" alignSelf="flex-start">
+            <Flex width="290px">
                 <Typography type="bodyLarge" fontFamily="semiBold">
                     Types
                 </Typography>
-                <Flex width="290px" flexDirection="row" marginString="12px 0">
+                <Flex flexDirection="row" marginString="12px 0">
                     {typesTags}
                 </Flex>
             </Flex>

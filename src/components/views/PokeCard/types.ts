@@ -26,4 +26,5 @@ export type WhiteCardProps = {
     colors: CardColors;
     abilities: any;
     types: any;
+    averageStrength: number;
 };

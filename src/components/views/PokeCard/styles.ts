@@ -5,7 +5,7 @@ import { Flex, Typography } from 'src/components';
 
 export const Card = styled.View<{ background: string }>`
   background-color: ${({ background }) => background};
-  height: 610px;
+  height: 630px;
   width: 95%;
   margin: 10px 0;
   border-color: white;

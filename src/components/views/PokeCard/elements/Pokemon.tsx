@@ -19,6 +19,11 @@ const Pokemon: React.FC<PokemonViewType> = ({ name, id }) => {
 
     const { picLoading, colors } = useImageColors(pokemonImg);
 
+    const averageStrength =
+        data?.stats
+            ?.map((item: { base_stat: any }) => item.base_stat)
+            .reduce((prev: number, curr: number) => prev + curr, 0) / data?.stats?.length;
+
     return isLoading || picLoading ? (
         <ActivityIndicator />
     ) : (
@@ -35,6 +40,7 @@ const Pokemon: React.FC<PokemonViewType> = ({ name, id }) => {
                 height={data.height}
                 weight={data.weight}
                 abilities={data.abilities}
+                averageStrength={Math.round(averageStrength)}
             />
             <BottomBar />
         </Card>

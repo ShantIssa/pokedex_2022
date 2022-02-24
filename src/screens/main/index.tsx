@@ -1,11 +1,15 @@
 import React from 'react';
 import { ActivityIndicator, FlatList, RefreshControl, View } from 'react-native';
 import { useInfiniteQuery } from 'react-query';
+import { useScrollToTop } from '@react-navigation/native';
 
 import { PokeCard, Typography } from 'src/components';
 import { getPokemons } from 'src/services/api/pokemons';
 
 const Main = () => {
+    const ref = React.useRef(null);
+
+    useScrollToTop(ref);
     const { data, fetchNextPage, hasNextPage, isLoading, isRefetching, refetch, isError } = useInfiniteQuery(
         'pokemons',
         getPokemons,
@@ -21,6 +25,7 @@ const Main = () => {
                 <ActivityIndicator />
             ) : (
                 <FlatList
+                    ref={ref}
                     data={data?.pages}
                     onEndReachedThreshold={0.4}
                     showsVerticalScrollIndicator={false}
