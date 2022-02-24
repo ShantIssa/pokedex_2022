@@ -1,11 +1,19 @@
 import { useEffect, useState } from 'react';
 import ImageColors from 'react-native-image-colors';
 
-import { CardColors } from 'src/components/views/PokeCard/types';
+export type CardColors = {
+    primary: string;
+    secondary: string;
+    tertiary: string;
+};
 
 const useImageColors = (uri: string) => {
     const [loading, setLoading] = useState(true);
-    const [colors, setColor] = useState<CardColors>({ background: 'transparent' });
+    const [colors, setColor] = useState<CardColors>({
+        primary: 'transparent',
+        secondary: 'transparent',
+        tertiary: 'transparent',
+    });
 
     useEffect(() => {
         const fetchColors = async () => {
@@ -22,17 +30,23 @@ const useImageColors = (uri: string) => {
                 switch (result.platform) {
                     case 'android':
                         setColor({
-                            background: result.dominant || 'transparent',
+                            primary: result.dominant || 'transparent',
+                            secondary: result.darkVibrant || 'transparent',
+                            tertiary: result.lightVibrant || 'transparent',
                         });
                         break;
                     case 'web':
                         setColor({
-                            background: result.dominant || 'transparent',
+                            primary: result.dominant || 'transparent',
+                            secondary: result.darkVibrant || 'transparent',
+                            tertiary: result.lightVibrant || 'transparent',
                         });
                         break;
                     case 'ios':
                         setColor({
-                            background: result.secondary || 'transparent',
+                            primary: result.primary || 'transparent',
+                            secondary: result.secondary || 'transparent',
+                            tertiary: 'transparent' || result.detail,
                         });
                         break;
                     default:

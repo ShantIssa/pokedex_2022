@@ -3,7 +3,7 @@ import { View } from 'react-native';
 
 import { pokemonUrlToId } from 'src/utils/pokemonUrlToId';
 
-import Pokemon from './Pokemon';
+import Pokemon from './elements/Pokemon';
 import { PokeCardProps, PokemonType } from './types';
 
 const PokeCard: React.FC<PokeCardProps> = ({ pokemons }) => {
