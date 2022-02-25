@@ -31,8 +31,8 @@ const Main = () => {
                     showsVerticalScrollIndicator={false}
                     onEndReached={() => fetchNextPage()}
                     keyExtractor={(i, index) => String(index)}
-                    renderItem={({ item, index }) => <PokeCard key={`page-${index}`} pokemons={item.results} />}
                     refreshControl={<RefreshControl refreshing={isRefetching} onRefresh={() => refetch()} />}
+                    renderItem={({ item, index }) => <PokeCard key={`page-${index}`} pokemons={item.results} />}
                 />
             )}
             {!hasNextPage && <Typography>You can't load more</Typography>}

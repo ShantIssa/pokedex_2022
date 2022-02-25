@@ -3,9 +3,11 @@ import { combineReducers } from '@reduxjs/toolkit';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import user from './user/slice';
+import pokemons from './pokemons/slice';
 
 const rootReducer = combineReducers({
     user,
+    pokemons,
 });
 
 const persistConfig = {
