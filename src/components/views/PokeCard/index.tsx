@@ -1,32 +1,34 @@
-import React, { useEffect } from 'react';
-import { View } from 'react-native';
+import React, { useEffect, useMemo } from 'react';
+import { FlatList, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { pokemonUrlToId } from 'src/utils/pokemonUrlToId';
-import { setPokemons } from 'src/redux/slices/pokemons/slice';
 import { selectPokemons } from 'src/redux/slices/pokemons/selectors';
+import { setPokemons } from 'src/redux/slices/pokemons/slice';
 
 import Pokemon from './elements/Pokemon';
-import { PokeCardProps, PokemonType } from './types';
+import { PokeCardProps } from './types';
 
 const PokeCard: React.FC<PokeCardProps> = ({ pokemons }) => {
     const dispatch = useDispatch();
     const selectedPokemons = useSelector(selectPokemons);
+
     useEffect(() => {
-        dispatch(setPokemons(pokemons));
-    }, [dispatch, pokemons]);
-    console.log(selectedPokemons);
-    return (
-        <View>
-            {selectedPokemons?.map(({ name, url }: PokemonType, key) => {
-                return (
-                    <View key={key}>
-                        <Pokemon name={name} id={pokemonUrlToId(url)} />
-                    </View>
-                );
-            })}
-        </View>
-    );
+        dispatch(setPokemons([...selectedPokemons, ...pokemons]));
+    }, [dispatch, pokemons, selectedPokemons]);
+
+    const pokemonList = useMemo(() => {
+        return (
+            <FlatList
+                data={selectedPokemons}
+                showsVerticalScrollIndicator={false}
+                keyExtractor={({ url }) => url}
+                renderItem={({ item }) => <Pokemon name={item.name} id={pokemonUrlToId(item.url)} />}
+            />
+        );
+    }, [selectedPokemons]);
+
+    return <View>{selectedPokemons && pokemonList}</View>;
 };
 
 export default PokeCard;

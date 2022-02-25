@@ -1,7 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
 
-import { PokeballGrey } from 'src/assets/icons';
 import { Flex, Typography } from 'src/components';
 import { CardHeaderProps } from 'src/components/views/PokeCard/types';
 
