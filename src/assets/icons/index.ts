@@ -8,3 +8,7 @@ export { default as HomeRed } from './navbar/home_red.svg';
 // Header
 
 export { default as PokeballGrey } from './header/pokeball_grey.svg';
+
+//Cards
+
+export { default as PokeballCard } from './cards/Pokeball';
