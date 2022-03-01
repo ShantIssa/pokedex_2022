@@ -66,4 +66,5 @@ buck-out/
 
 node_modules/
 
+project.xcworkspace
 

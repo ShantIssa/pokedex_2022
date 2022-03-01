@@ -6,7 +6,6 @@ import { WhiteCardProps } from '../types';
 import { PokemonColorText, WhiteCardWrapper, LinesFlex, TagCard } from '../styles';
 
 const WhiteCard: React.FC<WhiteCardProps> = ({ averageStrength, height, name, weight, colors, abilities, types }) => {
-    console.log(averageStrength, 'averageStrength');
     const abilitiesRenderer = abilities.map(({ slot, ability }: any) => {
         return (
             <Typography key={slot} textTransform="capitalize" type="h3">

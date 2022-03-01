@@ -1,12 +1,12 @@
 import React from 'react';
 import { useQuery } from 'react-query';
-import { ActivityIndicator } from 'react-native';
 
 import { useImageColors } from 'src/hooks';
 import { PokeballCard } from 'src/assets/icons';
 import { getPokemonById } from 'src/services/api/pokemons';
 
 import WhiteCard from './WhiteCard';
+import Skeleton from './Skeleton';
 import BottomBar from './BottomBar';
 import CardHeader from './CardHeader';
 
@@ -25,7 +25,7 @@ const Pokemon: React.FC<PokemonViewType> = ({ name, id }) => {
             .reduce((prev: number, curr: number) => prev + curr, 0) / data?.stats?.length;
 
     return isLoading || picLoading ? (
-        <ActivityIndicator />
+        <Skeleton />
     ) : (
         <Card background={colors.primary}>
             <CardHeader name={name} id={data.id} base_experience={data.base_experience} />

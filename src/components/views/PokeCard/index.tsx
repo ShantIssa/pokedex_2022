@@ -1,23 +1,24 @@
-import React from 'react';
-import { View } from 'react-native';
+import React, { useMemo } from 'react';
+import { FlatList, View } from 'react-native';
 
 import { pokemonUrlToId } from 'src/utils/pokemonUrlToId';
 
 import Pokemon from './elements/Pokemon';
-import { PokeCardProps, PokemonType } from './types';
+import { PokeCardProps } from './types';
 
 const PokeCard: React.FC<PokeCardProps> = ({ pokemons }) => {
-    return (
-        <View>
-            {pokemons?.map(({ name, url }: PokemonType, key) => {
-                return (
-                    <View key={key}>
-                        <Pokemon name={name} id={pokemonUrlToId(url)} />
-                    </View>
-                );
-            })}
-        </View>
-    );
+    const pokemonList = useMemo(() => {
+        return (
+            <FlatList
+                data={pokemons}
+                showsVerticalScrollIndicator={false}
+                keyExtractor={({ url }) => url}
+                renderItem={({ item }) => <Pokemon name={item.name} id={pokemonUrlToId(item.url)} />}
+            />
+        );
+    }, [pokemons]);
+
+    return <View>{pokemons.length && pokemonList}</View>;
 };
 
 export default PokeCard;

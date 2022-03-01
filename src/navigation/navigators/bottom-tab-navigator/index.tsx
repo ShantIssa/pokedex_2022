@@ -34,7 +34,7 @@ const getTabBarIcon = (route: ScreenRoutes, focused: boolean, activeColor: strin
     );
 };
 
-const AuthenticationStackNavigator = () => {
+const BottomTabNavigator = () => {
     const theme = useTheme();
 
     const activeColor = theme.colors.secondary;
@@ -66,4 +66,4 @@ const AuthenticationStackNavigator = () => {
     );
 };
 
-export default AuthenticationStackNavigator;
+export default BottomTabNavigator;
