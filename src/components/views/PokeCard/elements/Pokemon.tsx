@@ -2,7 +2,6 @@ import React from 'react';
 import { useQuery } from 'react-query';
 import { useNavigation } from '@react-navigation/native';
 
-import { Button } from 'src/components';
 import { useImageColors } from 'src/hooks';
 import { PokeballCard } from 'src/assets/icons';
 import { ScreenRoutes } from 'src/navigation/routes';
@@ -15,6 +14,7 @@ import WhiteCard from './WhiteCard';
 import CardHeader from './CardHeader';
 
 import { PokemonViewType } from '../types';
+import Button from '../../../shared/Button';
 import { Card, PokeballCardStyled, PokemonImg } from '../styles';
 
 const Pokemon: React.FC<PokemonViewType> = ({ name, id }) => {

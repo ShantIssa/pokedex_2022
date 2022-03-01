@@ -1,7 +1,8 @@
 import styled from 'styled-components/native';
 import { Image } from 'react-native';
 
-import { Flex, Typography } from 'src/components';
+import Flex from '../../shared/Flex';
+import Typography from '../../shared/Typography';
 
 export const Card = styled.View<{ background: string }>`
   background-color: ${({ background }) => background};

@@ -55,7 +55,7 @@ const useImageColors = (uri: string) => {
                 setLoading(false);
             }
         };
-        fetchColors();
+        fetchColors().then((r) => r);
     }, [uri]);
 
     return { picLoading: loading, colors };

@@ -3,9 +3,12 @@ import React from 'react';
 import { View } from 'react-native';
 
 import { ScreenRoutes } from 'src/navigation/routes';
-import { Flex, Typography, Button } from 'src/components';
-import { CardHeaderProps } from 'src/components/views/PokeCard/types';
 import { MainScreenNavigatorStack } from 'src/navigation/navigators/main-screen-navigator/types';
+
+import Flex from '../../../shared/Flex';
+import { CardHeaderProps } from '../types';
+import Button from '../../../shared/Button';
+import Typography from '../../../shared/Typography';
 
 const CardHeader: React.FC<CardHeaderProps> = ({ name, id, base_experience }) => {
     const navigation = useNavigation<MainScreenNavigatorStack>();

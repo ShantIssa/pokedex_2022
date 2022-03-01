@@ -4,11 +4,11 @@ import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 import styled from 'styled-components/native';
 
 const SkeletonWrapper = styled.View`
-  height: 150px;
   width: 95%;
-  border-radius: 8px;
-  align-self: center;
+  height: 150px;
   margin: 10px 0;
+  align-self: center;
+  border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.light};
 `;
 

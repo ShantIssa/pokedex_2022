@@ -5,6 +5,6 @@ export enum ScreenRoutes {
 }
 
 export enum NavigatorRoutes {
-    Main = 'Main',
+    Main = 'MainScreen',
     Settings = 'Settings',
 }
