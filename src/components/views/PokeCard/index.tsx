@@ -13,7 +13,7 @@ const PokeCard: React.FC<PokeCardProps> = ({ pokemons }) => {
                 data={pokemons}
                 showsVerticalScrollIndicator={false}
                 keyExtractor={({ url }) => url}
-                renderItem={({ item }) => <Pokemon name={item.name} id={pokemonUrlToId(item.url)} url={item.url} />}
+                renderItem={({ item }) => <Pokemon name={item.name} id={pokemonUrlToId(item.url)} />}
             />
         );
     }, [pokemons]);

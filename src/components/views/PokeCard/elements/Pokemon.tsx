@@ -17,9 +17,11 @@ import CardHeader from './CardHeader';
 import { PokemonViewType } from '../types';
 import { Card, PokeballCardStyled, PokemonImg } from '../styles';
 
-const Pokemon: React.FC<PokemonViewType> = ({ name, id, url }) => {
+const Pokemon: React.FC<PokemonViewType> = ({ name, id }) => {
     const navigation = useNavigation<MainScreenNavigatorStack>();
+
     const { data, isLoading } = useQuery(id, getPokemonById);
+
     const pokemonImg = data?.sprites?.other['official-artwork']?.front_default;
 
     const { picLoading, colors } = useImageColors(pokemonImg);
@@ -33,11 +35,11 @@ const Pokemon: React.FC<PokemonViewType> = ({ name, id, url }) => {
         <Skeleton />
     ) : (
         <Card background={colors.primary}>
-            <CardHeader name={name} id={data.id} url={url} base_experience={data.base_experience} />
+            <CardHeader name={name} id={data.id} base_experience={data.base_experience} />
             <PokeballCardStyled>
                 <PokeballCard ballColor={colors.secondary} />
             </PokeballCardStyled>
-            <Button style={{ zIndex: 1 }} onPress={() => navigation.navigate(ScreenRoutes.Pokemon, { name, url })}>
+            <Button style={{ zIndex: 1 }} onPress={() => navigation.navigate(ScreenRoutes.Pokemon, { name, id })}>
                 {pokemonImg && <PokemonImg source={{ uri: pokemonImg }} />}
             </Button>
             <WhiteCard

@@ -5,5 +5,5 @@ export type ButtonProps = {
     disabled?: boolean;
     onPress?: () => void;
     children?: React.ReactNode;
-    style: ViewStyle;
+    style?: ViewStyle;
 };

@@ -7,7 +7,6 @@ export type PokemonType = {
 export type PokemonViewType = {
     name: string;
     id: string;
-    url: string;
 };
 
 export type PokeCardProps = {
@@ -18,7 +17,6 @@ export type CardHeaderProps = {
     name: string;
     id: string;
     base_experience: string;
-    url: string;
 };
 
 export type WhiteCardProps = {

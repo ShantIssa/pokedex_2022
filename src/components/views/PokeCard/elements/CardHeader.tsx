@@ -7,14 +7,14 @@ import { Flex, Typography, Button } from 'src/components';
 import { CardHeaderProps } from 'src/components/views/PokeCard/types';
 import { MainScreenNavigatorStack } from 'src/navigation/navigators/main-screen-navigator/types';
 
-const CardHeader: React.FC<CardHeaderProps> = ({ name, id, base_experience, url }) => {
+const CardHeader: React.FC<CardHeaderProps> = ({ name, id, base_experience }) => {
     const navigation = useNavigation<MainScreenNavigatorStack>();
 
     return (
         <Flex marginString="12px" flexDirection="row" alignItems="center" justifyContent="space-between">
             <View>
                 <Flex flexDirection="row" alignItems="center">
-                    <Button onPress={() => navigation.navigate(ScreenRoutes.Pokemon, { name, url })}>
+                    <Button onPress={() => navigation.navigate(ScreenRoutes.Pokemon, { name, id })}>
                         <Flex marginString="0 10px 0 10px">
                             <Typography
                                 color="dark"
