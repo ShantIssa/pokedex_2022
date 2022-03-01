@@ -3,19 +3,20 @@ import { View } from 'react-native';
 import { useTheme } from 'styled-components/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import { Main, Settings } from 'src/screens';
+import { Settings } from 'src/screens';
 import { Home, HomeRed, Save, SaveRed } from 'src/assets/icons';
 
 import { styles } from './styles';
 
-import { ScreenRoutes } from '../../routes';
+import MainScreenNavigator from '../main-screen-navigator';
+import { NavigatorRoutes, ScreenRoutes } from '../../routes';
 
 const Tab = createBottomTabNavigator();
 
-const getTabIconsMapping = (route: ScreenRoutes, focused: boolean) => {
-    const iconMap: { [key in ScreenRoutes]?: () => any } = {
-        [ScreenRoutes.Main]: () => (focused ? HomeRed : Home),
-        [ScreenRoutes.Settings]: () => (focused ? SaveRed : Save),
+const getTabIconsMapping = (route: NavigatorRoutes, focused: boolean) => {
+    const iconMap: { [key in NavigatorRoutes]?: () => any } = {
+        [NavigatorRoutes.Main]: () => (focused ? HomeRed : Home),
+        [NavigatorRoutes.Settings]: () => (focused ? SaveRed : Save),
     };
     return iconMap[route]?.();
 };
@@ -24,7 +25,7 @@ const TabIcon: React.FC = ({ children }) => {
     return <View style={{ alignItems: 'center', justifyContent: 'center' }}>{children}</View>;
 };
 
-const getTabBarIcon = (route: ScreenRoutes, focused: boolean, activeColor: string, inactiveColor: string) => {
+const getTabBarIcon = (route: NavigatorRoutes, focused: boolean, activeColor: string, inactiveColor: string) => {
     const Icon = getTabIconsMapping(route, focused);
 
     return (
@@ -57,10 +58,10 @@ const BottomTabNavigator = () => {
                 tabBarActiveTintColor: activeColor,
                 tabBarInactiveTintColor: inactiveColor,
                 tabBarIcon: ({ focused }) =>
-                    getTabBarIcon(route.name as ScreenRoutes, focused, activeColor, inactiveColor),
+                    getTabBarIcon(route.name as NavigatorRoutes, focused, activeColor, inactiveColor),
             })}
         >
-            <Tab.Screen name={ScreenRoutes.Main} component={Main} />
+            <Tab.Screen name={NavigatorRoutes.Main} component={MainScreenNavigator} />
             <Tab.Screen name={ScreenRoutes.Settings} component={Settings} />
         </Tab.Navigator>
     );

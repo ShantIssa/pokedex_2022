@@ -18,7 +18,6 @@ export const PokemonImg = styled(Image)`
   width: 190px;
   top: 50px;
   align-self: center;
-  z-index: 1;
 `;
 
 export const PokeballCardStyled = styled.View`
