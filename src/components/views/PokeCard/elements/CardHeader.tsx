@@ -1,23 +1,17 @@
-import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { View } from 'react-native';
-
-import { ScreenRoutes } from 'src/navigation/routes';
-import { MainScreenNavigatorStack } from 'src/navigation/navigators/main-screen-navigator/types';
 
 import Flex from '../../../shared/Flex';
 import { CardHeaderProps } from '../types';
 import Button from '../../../shared/Button';
 import Typography from '../../../shared/Typography';
 
-const CardHeader: React.FC<CardHeaderProps> = ({ name, id, base_experience }) => {
-    const navigation = useNavigation<MainScreenNavigatorStack>();
-
+const CardHeader: React.FC<CardHeaderProps> = ({ name, id, base_experience, navigateToPokemonScreen }) => {
     return (
         <Flex marginString="12px" flexDirection="row" alignItems="center" justifyContent="space-between">
             <View>
                 <Flex flexDirection="row" alignItems="center">
-                    <Button onPress={() => navigation.navigate(ScreenRoutes.Pokemon, { name, id })}>
+                    <Button onPress={navigateToPokemonScreen}>
                         <Flex marginString="0 10px 0 10px">
                             <Typography
                                 color="dark"

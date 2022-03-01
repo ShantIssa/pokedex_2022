@@ -31,15 +31,24 @@ const Pokemon: React.FC<PokemonViewType> = ({ name, id }) => {
             ?.map((item: { base_stat: any }) => item.base_stat)
             .reduce((prev: number, curr: number) => prev + curr, 0) / data?.stats?.length;
 
+    const navigateToPokemonScreen = () => {
+        navigation.navigate(ScreenRoutes.Pokemon, { name, id, colors });
+    };
+
     return isLoading || picLoading ? (
         <Skeleton />
     ) : (
         <Card background={colors.primary}>
-            <CardHeader name={name} id={data.id} base_experience={data.base_experience} />
+            <CardHeader
+                navigateToPokemonScreen={navigateToPokemonScreen}
+                name={name}
+                id={data.id}
+                base_experience={data.base_experience}
+            />
             <PokeballCardStyled>
                 <PokeballCard ballColor={colors.secondary} />
             </PokeballCardStyled>
-            <Button style={{ zIndex: 1 }} onPress={() => navigation.navigate(ScreenRoutes.Pokemon, { name, id })}>
+            <Button style={{ zIndex: 1 }} onPress={navigateToPokemonScreen}>
                 {pokemonImg && <PokemonImg source={{ uri: pokemonImg }} />}
             </Button>
             <WhiteCard
