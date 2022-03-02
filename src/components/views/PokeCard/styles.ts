@@ -1,7 +1,8 @@
 import styled from 'styled-components/native';
 import { Image } from 'react-native';
 
-import { Flex, Typography } from 'src/components';
+import Flex from '../../shared/Flex';
+import Typography from '../../shared/Typography';
 
 export const Card = styled.View<{ background: string }>`
   background-color: ${({ background }) => background};
@@ -18,7 +19,6 @@ export const PokemonImg = styled(Image)`
   width: 190px;
   top: 50px;
   align-self: center;
-  z-index: 1;
 `;
 
 export const PokeballCardStyled = styled.View`

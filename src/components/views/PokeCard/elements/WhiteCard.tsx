@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { Flex, Typography } from 'src/components';
-
+import Flex from '../../../shared/Flex';
+import Typography from '../../../shared/Typography';
 import { WhiteCardProps } from '../types';
 import { PokemonColorText, WhiteCardWrapper, LinesFlex, TagCard } from '../styles';
 

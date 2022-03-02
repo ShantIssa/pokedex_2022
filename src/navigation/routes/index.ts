@@ -1,4 +1,10 @@
 export enum ScreenRoutes {
-  Main = 'Main',
-  Settings = 'Settings',
+    Main = 'Main',
+    Pokemon = 'Pokemon',
+    Settings = 'Settings',
+}
+
+export enum NavigatorRoutes {
+    Main = 'MainScreen',
+    Settings = 'Settings',
 }
