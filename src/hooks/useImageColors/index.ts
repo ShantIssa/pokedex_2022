@@ -7,32 +7,33 @@ import { CardColors } from './types';
 const useImageColors = (uri: string) => {
     const [loading, setLoading] = useState(true);
     const [colors, setColor] = useState<CardColors>({
-        primary: 'transparent',
-        secondary: 'transparent',
-        tertiary: 'transparent',
+        primary: 'black',
+        secondary: 'black',
+        tertiary: 'black',
     });
 
     const colorSetter = (result: ImageColorsResult) => {
+        console.log(result, result.platform);
         switch (result.platform) {
             case 'android':
                 setColor({
-                    primary: result.dominant || 'transparent',
-                    secondary: result.darkVibrant || 'transparent',
-                    tertiary: result.lightVibrant || 'transparent',
+                    primary: result.dominant || 'black',
+                    secondary: result.darkVibrant || 'black',
+                    tertiary: result.lightVibrant || 'black',
                 });
                 break;
             case 'web':
                 setColor({
-                    primary: result.dominant || 'transparent',
-                    secondary: result.darkVibrant || 'transparent',
-                    tertiary: result.lightVibrant || 'transparent',
+                    primary: result.dominant || 'black',
+                    secondary: result.darkVibrant || 'black',
+                    tertiary: result.lightVibrant || 'black',
                 });
                 break;
             case 'ios':
                 setColor({
-                    primary: result.primary || 'transparent',
-                    secondary: result.secondary || 'transparent',
-                    tertiary: 'transparent' || result.detail,
+                    primary: result.background || 'black',
+                    secondary: result.secondary || 'black',
+                    tertiary: result.primary || 'black',
                 });
                 break;
             default:

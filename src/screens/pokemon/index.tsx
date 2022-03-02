@@ -13,7 +13,6 @@ import { Typography } from '../../components';
 const Pokemon: React.FC<any> = ({ route }) => {
     const { id, name, colors } = route.params;
     const { data, isLoading } = useQuery(id, getPokemonById);
-    console.log(data, 'data');
 
     const imgUri = data?.sprites?.other['official-artwork']?.front_default;
     const abilities = data?.abilities;

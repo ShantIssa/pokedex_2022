@@ -9,7 +9,6 @@ const Stats: React.FC<StatsProps> = ({ stats }) => {
     //     base_stat: number;
     //     effort: number;
     //     stat: { name: string; url: string };
-    console.log(stats);
 
     const statsRenderer = stats.map((item) => {
         return (
