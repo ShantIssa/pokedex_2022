@@ -5,7 +5,7 @@ export type AbilitiesProps = {
     colors: CardColors;
 };
 
-type Stats = {
+export type Stats = {
     base_stat: number;
     effort: number;
     stat: { name: string; url: string };
@@ -13,4 +13,5 @@ type Stats = {
 
 export type StatsProps = {
     stats: Stats[];
+    colors: CardColors;
 };

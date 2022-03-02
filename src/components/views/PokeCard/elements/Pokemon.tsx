@@ -7,6 +7,7 @@ import { PokeballCard } from 'src/assets/icons';
 import { ScreenRoutes } from 'src/navigation/routes';
 import { getPokemonById } from 'src/services/api/pokemons';
 import { MainScreenNavigatorStack } from 'src/navigation/navigators/main-screen-navigator/types';
+import { averageStrengthCalculator } from 'src/utils/averageStrengthCalculator';
 
 import Skeleton from './Skeleton';
 import BottomBar from './BottomBar';
@@ -26,10 +27,7 @@ const Pokemon: React.FC<PokemonViewType> = ({ name, id }) => {
 
     const { picLoading, colors } = useImageColors(pokemonImg);
 
-    const averageStrength =
-        data?.stats
-            ?.map((item: { base_stat: any }) => item.base_stat)
-            .reduce((prev: number, curr: number) => prev + curr, 0) / data?.stats?.length;
+    const averageStrength = averageStrengthCalculator(data?.stats);
 
     const navigateToPokemonScreen = () => {
         navigation.navigate(ScreenRoutes.Pokemon, { name, id, colors });

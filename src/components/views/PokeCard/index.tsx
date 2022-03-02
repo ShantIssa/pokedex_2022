@@ -11,6 +11,8 @@ const PokeCard: React.FC<PokeCardProps> = ({ pokemons }) => {
         return (
             <FlatList
                 data={pokemons}
+                maxToRenderPerBatch={5}
+                removeClippedSubviews={true}
                 showsVerticalScrollIndicator={false}
                 keyExtractor={({ url }) => url}
                 renderItem={({ item }) => <Pokemon name={item.name} id={pokemonUrlToId(item.url)} />}

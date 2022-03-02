@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { ActivityIndicator, FlatList, RefreshControl, View } from 'react-native';
+import { ActivityIndicator, FlatList, RefreshControl, SafeAreaView } from 'react-native';
 import { useInfiniteQuery } from 'react-query';
 import { useScrollToTop } from '@react-navigation/native';
 
@@ -24,7 +24,9 @@ const Main = () => {
             <FlatList
                 ref={ref}
                 data={data?.pages}
+                maxToRenderPerBatch={5}
                 onEndReachedThreshold={0.4}
+                removeClippedSubviews={true}
                 showsVerticalScrollIndicator={false}
                 onEndReached={() => fetchNextPage()}
                 keyExtractor={(i, index) => String(index)}
@@ -35,10 +37,10 @@ const Main = () => {
     }, [data?.pages, fetchNextPage, isRefetching, refetch]);
 
     return (
-        <View>
+        <SafeAreaView>
             {isLoading || isError ? <ActivityIndicator /> : dataList}
             {!isLoading && !hasNextPage && <Typography>You can't load more</Typography>}
-        </View>
+        </SafeAreaView>
     );
 };
 

@@ -9,11 +9,11 @@ const Abilities: React.FC<AbilitiesProps> = ({ abilities, colors }) => {
     const renderAbilities = abilities.map((item) => {
         return (
             <Typography
-                textAlign="center"
-                textTransform="capitalize"
                 type="h4"
-                textStyle={{ color: colors.tertiary }}
+                textAlign="center"
                 key={item.ability.url}
+                textTransform="capitalize"
+                textStyle={{ color: colors.tertiary }}
             >
                 {item.ability.name}
             </Typography>

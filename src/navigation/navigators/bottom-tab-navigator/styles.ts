@@ -2,12 +2,14 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
     tabBarStyle: {
-        height: 60,
-    },
-    header: {
-        height: 66,
-    },
-    title: {
-        fontSize: 23,
+        height: 70,
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
     },
 });
