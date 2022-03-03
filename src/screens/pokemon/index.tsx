@@ -1,63 +1,47 @@
 import React from 'react';
-import { useQuery } from 'react-query';
-import { Alert, Image, View } from 'react-native';
-import StickyParallaxHeader from 'react-native-sticky-parallax-header';
 import { useNavigation } from '@react-navigation/native';
+import StickyParallaxHeader, { Tab } from 'react-native-sticky-parallax-header';
 
-import Stats from 'src/screens/pokemon/components/Stats';
-import { getPokemonById } from 'src/services/api/pokemons';
-import { capitilize } from 'src/utils/capitilze';
+import { capitalize } from 'src/utils/capitalize';
 import HeaderForeground from 'src/screens/pokemon/components/HeaderForeground';
+import { PokemonTab } from 'src/components';
 
-import { WhiteBackground } from './styles';
-import Abilities from './components/Abilities';
+import { PokemonScreenProps } from './types';
 
-import { Typography } from '../../components';
-
-const Pokemon: React.FC<any> = ({ route }) => {
-    const { id, name, colors } = route.params;
-    const { data, isLoading } = useQuery(id, getPokemonById);
-
-    const stats = data?.stats;
-    const abilities = data?.abilities;
-    const imgUri = data?.sprites?.other['official-artwork']?.front_default;
+const Pokemon: React.FC<PokemonScreenProps> = ({ route }) => {
+    const { name, colors, evolutionNames, imgUri } = route.params;
 
     const navigation = useNavigation();
-    return (
-        <>
-            <StickyParallaxHeader
-                bounces={false}
-                snapToEdge={false}
-                decelerationRate={300}
-                rememberTabScrollPosition
-                headerType="TabbedHeader"
-                backgroundColor={colors.primary}
-                //eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-ignore
-                logo={{ uri: null }}
-                foreground={() => <HeaderForeground name={name} colors={colors} imgUri={imgUri} />}
-            >
-                <View>
-                    {!isLoading && (
-                        <View>
-                            <WhiteBackground>
-                                <Typography
-                                    type="h1"
-                                    textAlign="center"
-                                    textTransform="capitalize"
-                                    textStyle={{ color: colors.primary }}
-                                >
-                                    {name}
-                                </Typography>
-                            </WhiteBackground>
 
-                            <Abilities colors={colors} abilities={abilities} />
-                            <Stats colors={colors} stats={stats} />
-                        </View>
-                    )}
-                </View>
-            </StickyParallaxHeader>
-        </>
+    const tabsRenderer = (pokeNames: string[]) => {
+        return pokeNames.map((i) => {
+            return {
+                title: capitalize(i),
+                content: <PokemonTab colors={colors} name={i} />,
+            };
+        });
+    };
+
+    return (
+        <StickyParallaxHeader
+            bounces={false}
+            snapToEdge={false}
+            decelerationRate={300}
+            headerHeight={30}
+            rememberTabScrollPosition
+            headerType="TabbedHeader"
+            backgroundColor={colors.primary}
+            tabTextActiveStyle={{ fontWeight: '600' }}
+            tabsContainerStyle={{ width: 300, justifyContent: 'space-between' }}
+            tabTextContainerStyle={{ backgroundColor: 'white', borderRadius: 10 }}
+            tabTextContainerActiveStyle={{ backgroundColor: colors.secondary }}
+            tabTextStyle={{ fontWeight: '600', padding: 8 }}
+            tabs={tabsRenderer(evolutionNames) as unknown as Tab[]}
+            //eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            logo={{ uri: null }}
+            foreground={() => <HeaderForeground name={name} colors={colors} imgUri={imgUri} />}
+        />
     );
 };
 

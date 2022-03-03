@@ -35,12 +35,19 @@ const Pokemon: React.FC<PokemonViewType> = ({ id }) => {
     const averageStrength = averageStrengthCalculator(pokemon?.stats);
 
     const navigateToPokemonScreen = () => {
-        navigation.navigate(ScreenRoutes.Pokemon, { name: pokemon?.name, id, colors });
+        navigation.navigate(ScreenRoutes.Pokemon, {
+            name: pokemon?.name,
+            colors,
+            imgUri: pokemonImg,
+            evolutionNames: [
+                evolutionData?.chain?.species?.name,
+                evolutionData?.chain?.evolves_to[0]?.species?.name,
+                evolutionData?.chain?.evolves_to[0]?.evolves_to[0]?.species?.name,
+            ],
+        });
     };
 
     const isLoading = pokemonLoading || evolutionLoading || picLoading;
-
-    console.log(evolutionData?.chain);
 
     return isLoading ? (
         <Skeleton />

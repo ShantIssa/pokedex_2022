@@ -6,7 +6,7 @@ import { ScreenRoutes } from '../../routes';
 
 export type MainParamsList = {
     [ScreenRoutes.Main]: undefined;
-    [ScreenRoutes.Pokemon]: { name: string; id: string; colors: CardColors };
+    [ScreenRoutes.Pokemon]: { name: string; colors: CardColors; evolutionNames: string[]; imgUri: string };
 };
 export type AuthenticationStackProps<RouteName extends keyof MainParamsList> = StackScreenProps<
     MainParamsList,

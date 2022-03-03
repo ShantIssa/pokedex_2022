@@ -1,5 +1,4 @@
 import React from 'react';
-import { View } from 'react-native';
 
 import { Flex, Typography } from 'src/components';
 
