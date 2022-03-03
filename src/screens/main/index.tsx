@@ -4,7 +4,7 @@ import { useInfiniteQuery } from 'react-query';
 import { useScrollToTop } from '@react-navigation/native';
 
 import { PokeCard, Typography } from 'src/components';
-import { getPokemons } from 'src/services/api/pokemons';
+import { getPokemons, getPokemonsEvolutionChain } from 'src/services/api/pokemons';
 
 const Main = () => {
     const ref = React.useRef(null);
@@ -12,7 +12,7 @@ const Main = () => {
     useScrollToTop(ref);
     const { data, fetchNextPage, hasNextPage, isLoading, isRefetching, refetch, isError } = useInfiniteQuery(
         'pokemons',
-        getPokemons,
+        getPokemonsEvolutionChain,
         {
             getNextPageParam: (lastPage) => lastPage.next,
             getPreviousPageParam: (firstPage) => firstPage.previous,

@@ -7,18 +7,19 @@ import Pokemon from './elements/Pokemon';
 import { PokeCardProps } from './types';
 
 const PokeCard: React.FC<PokeCardProps> = ({ pokemons }) => {
-    const pokemonList = useMemo(() => {
-        return (
+    const pokemonList = useMemo(
+        () => (
             <FlatList
                 data={pokemons}
                 maxToRenderPerBatch={5}
                 removeClippedSubviews={true}
                 showsVerticalScrollIndicator={false}
                 keyExtractor={({ url }) => url}
-                renderItem={({ item }) => <Pokemon name={item.name} id={pokemonUrlToId(item.url)} />}
+                renderItem={({ item }) => <Pokemon id={pokemonUrlToId(item.url)} />}
             />
-        );
-    }, [pokemons]);
+        ),
+        [pokemons],
+    );
 
     return <View>{pokemons.length && pokemonList}</View>;
 };

@@ -5,9 +5,9 @@ import { useNavigation } from '@react-navigation/native';
 import { useImageColors } from 'src/hooks';
 import { PokeballCard } from 'src/assets/icons';
 import { ScreenRoutes } from 'src/navigation/routes';
-import { getPokemonById } from 'src/services/api/pokemons';
-import { MainScreenNavigatorStack } from 'src/navigation/navigators/main-screen-navigator/types';
 import { averageStrengthCalculator } from 'src/utils/averageStrengthCalculator';
+import { getPokemonByEvlotuionId, getSinglePokemon } from 'src/services/api/pokemons';
+import { MainScreenNavigatorStack } from 'src/navigation/navigators/main-screen-navigator/types';
 
 import Skeleton from './Skeleton';
 import BottomBar from './BottomBar';
@@ -18,30 +18,38 @@ import { PokemonViewType } from '../types';
 import Button from '../../../shared/Button';
 import { Card, PokeballCardStyled, PokemonImg } from '../styles';
 
-const Pokemon: React.FC<PokemonViewType> = ({ name, id }) => {
+const Pokemon: React.FC<PokemonViewType> = ({ id }) => {
+    const { data: evolutionData, isLoading: evolutionLoading } = useQuery(id, getPokemonByEvlotuionId);
+
+    const { data: pokemon, isLoading: pokemonLoading } = useQuery(
+        evolutionData?.chain?.species?.name || '',
+        getSinglePokemon,
+    );
+
     const navigation = useNavigation<MainScreenNavigatorStack>();
 
-    const { data, isLoading } = useQuery(id, getPokemonById);
-
-    const pokemonImg = data?.sprites?.other['official-artwork']?.front_default;
+    const pokemonImg = pokemon?.sprites?.other['official-artwork']?.front_default;
 
     const { picLoading, colors } = useImageColors(pokemonImg);
 
-    const averageStrength = averageStrengthCalculator(data?.stats);
+    const averageStrength = averageStrengthCalculator(pokemon?.stats);
 
     const navigateToPokemonScreen = () => {
-        navigation.navigate(ScreenRoutes.Pokemon, { name, id, colors });
+        navigation.navigate(ScreenRoutes.Pokemon, { name: pokemon?.name, id, colors });
     };
 
-    return isLoading || picLoading ? (
+    const isLoading = pokemonLoading || evolutionLoading || picLoading;
+
+    console.log(evolutionData?.chain);
+
+    return isLoading ? (
         <Skeleton />
     ) : (
         <Card background={colors.primary}>
             <CardHeader
+                name={pokemon.name}
+                base_experience={pokemon.base_experience}
                 navigateToPokemonScreen={navigateToPokemonScreen}
-                name={name}
-                id={data.id}
-                base_experience={data.base_experience}
             />
             <PokeballCardStyled>
                 <PokeballCard ballColor={colors.secondary} />
@@ -50,12 +58,12 @@ const Pokemon: React.FC<PokemonViewType> = ({ name, id }) => {
                 {pokemonImg && <PokemonImg source={{ uri: pokemonImg }} />}
             </Button>
             <WhiteCard
-                name={name}
                 colors={colors}
-                types={data.types}
-                height={data.height}
-                weight={data.weight}
-                abilities={data.abilities}
+                name={pokemon.name}
+                types={pokemon.types}
+                height={pokemon.height}
+                weight={pokemon.weight}
+                abilities={pokemon.abilities}
                 averageStrength={Math.round(averageStrength)}
             />
             <BottomBar />
