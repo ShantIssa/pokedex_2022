@@ -15,3 +15,9 @@ export type StatsProps = {
     stats: Stats[];
     colors: CardColors;
 };
+
+export type HeaderForegroundProps = {
+    imgUri: string;
+    name: string;
+    colors: CardColors;
+};

@@ -6,6 +6,8 @@ import { useNavigation } from '@react-navigation/native';
 
 import Stats from 'src/screens/pokemon/components/Stats';
 import { getPokemonById } from 'src/services/api/pokemons';
+import { capitilize } from 'src/utils/capitilze';
+import HeaderForeground from 'src/screens/pokemon/components/HeaderForeground';
 
 import { WhiteBackground } from './styles';
 import Abilities from './components/Abilities';
@@ -24,26 +26,21 @@ const Pokemon: React.FC<any> = ({ route }) => {
     return (
         <>
             <StickyParallaxHeader
-                title={name}
-                snapValue={100}
-                subtitle={name}
                 bounces={false}
                 snapToEdge={false}
                 decelerationRate={300}
+                rememberTabScrollPosition
+                headerType="TabbedHeader"
+                backgroundColor={colors.primary}
                 //eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-ignore
-                image={{ uri: imgUri }}
-                headerType="AvatarHeader"
-                backgroundColor={colors.primary}
-                backgroundImage={{ uri: imgUri }}
-                contentContainerStyles={{ backgroundColor: 'white' }}
-                leftTopIconOnPress={() => navigation.goBack()}
+                logo={{ uri: null }}
+                foreground={() => <HeaderForeground name={name} colors={colors} imgUri={imgUri} />}
             >
                 <View>
                     {!isLoading && (
                         <View>
                             <WhiteBackground>
-                                <Image source={{ uri: imgUri }} style={{ height: 200, width: 200 }} />
                                 <Typography
                                     type="h1"
                                     textAlign="center"
