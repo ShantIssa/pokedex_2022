@@ -43,7 +43,7 @@ const Pokemon: React.FC<PokemonViewType> = ({ id }) => {
                 evolutionData?.chain?.species?.name,
                 evolutionData?.chain?.evolves_to[0]?.species?.name,
                 evolutionData?.chain?.evolves_to[0]?.evolves_to[0]?.species?.name,
-            ],
+            ].filter((i) => i !== undefined),
         });
     };
 

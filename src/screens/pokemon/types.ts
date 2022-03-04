@@ -12,7 +12,5 @@ export type PokemonScreenProps = {
 };
 
 export type HeaderForegroundProps = {
-    imgUri: string;
-    name: string;
     colors: CardColors;
 };
