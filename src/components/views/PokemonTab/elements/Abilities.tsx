@@ -1,29 +1,32 @@
 import React from 'react';
 
-import { Flex, Typography } from 'src/components';
-
 import { AbilitiesProps } from '../types';
+import { AbilityWrapper } from '../styles';
+import Flex from '../../../shared/Flex';
+import Typography from '../../../shared/Typography';
 
 const Abilities: React.FC<AbilitiesProps> = ({ abilities, colors }) => {
-    const renderAbilities = abilities.map((item) => {
-        return (
-            <Typography
-                type="h4"
-                textAlign="center"
-                key={item.ability.url}
-                textTransform="capitalize"
-                textStyle={{ color: colors.tertiary }}
-            >
+    const renderAbilities = abilities.map((item) => (
+        <AbilityWrapper backgroundColor={colors.primary} key={item.ability.url}>
+            <Typography type="h4" textAlign="center" textTransform="capitalize" textStyle={{ color: colors.secondary }}>
                 {item.ability.name}
             </Typography>
-        );
-    });
+        </AbilityWrapper>
+    ));
+
     return (
         <Flex marginString="20px 0">
-            <Typography textAlign="center" textStyle={{ color: colors.primary }} type="bodyLarge" fontFamily="semiBold">
+            <Typography
+                type="h1-small"
+                textAlign="center"
+                fontFamily="semiBold"
+                textStyle={{ color: colors.secondary }}
+            >
                 Abilities
             </Typography>
-            {renderAbilities}
+            <Flex alignSelf="center" flexDirection="row">
+                {renderAbilities}
+            </Flex>
         </Flex>
     );
 };

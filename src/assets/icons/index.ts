@@ -12,3 +12,6 @@ export { default as PokeballGrey } from './header/pokeball_grey.svg';
 //Cards
 
 export { default as PokeballCard } from './cards/Pokeball';
+
+//Navigation
+export { default as LeftArrow } from './navigation/left-one.svg';

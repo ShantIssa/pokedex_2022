@@ -1,8 +1,5 @@
 import styled from 'styled-components/native';
 
-import { CardColors } from 'src/hooks/useImageColors/types';
-import { Stats } from 'src/screens/pokemon/types';
-
 export const WhiteBackground = styled.View`
   width:100%;
   padding:10px;
@@ -12,7 +9,17 @@ export const WhiteBackground = styled.View`
   border-bottom-left-radius: 100px;
 `;
 
-export type StatsProps = {
-    stats: Stats[];
-    colors: CardColors;
-};
+export const PokeImg = styled.Image`
+    width: 230px;
+    height: 230px;
+`;
+
+export const AbilityWrapper = styled.View<{ backgroundColor: string }>`
+    height:30px;
+    padding: 0 5px;
+    margin: 10px 5px;
+    border-radius: 8px;
+    align-items: center;
+    background-color: ${({ backgroundColor }) => backgroundColor};
+    justify-content: center;
+`;

@@ -9,11 +9,11 @@ import { averageStrengthCalculator } from 'src/utils/averageStrengthCalculator';
 import { getPokemonByEvlotuionId, getSinglePokemon } from 'src/services/api/pokemons';
 import { MainScreenNavigatorStack } from 'src/navigation/navigators/main-screen-navigator/types';
 
-import Skeleton from './Skeleton';
 import BottomBar from './BottomBar';
 import WhiteCard from './WhiteCard';
 import CardHeader from './CardHeader';
 
+import Skeleton from '../../../shared/Skeleton';
 import { PokemonViewType } from '../types';
 import Button from '../../../shared/Button';
 import { Card, PokeballCardStyled, PokemonImg } from '../styles';

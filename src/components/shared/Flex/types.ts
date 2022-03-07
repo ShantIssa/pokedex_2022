@@ -4,6 +4,7 @@ export type FlexProps = Partial<{
     marginString: string;
     paddingString: string;
     width: string;
+    height: string;
     flexDirection: CSSProperties['flexDirection'];
     wrap: CSSProperties['flexWrap'];
     justifyContent: CSSProperties['justifyContent'];

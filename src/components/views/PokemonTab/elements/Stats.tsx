@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { FlatList, View } from 'react-native';
 
 import { Flex, Typography } from 'src/components';
 import { MULTIPLY_STRENGTH } from 'src/constants/constants';
@@ -9,34 +9,32 @@ import { StrengthBackground, StrengthColored } from 'src/screens/pokemon/styles'
 import { StatsProps } from '../types';
 
 const Stats: React.FC<StatsProps> = ({ stats, colors }) => {
-    const statsRenderer = stats.map((item) => {
-        const width = Math.round(item.base_stat * MULTIPLY_STRENGTH);
+    const statsRenderer = ({ item: { base_stat, stat } }: any) => {
+        const width = Math.round(base_stat * MULTIPLY_STRENGTH);
         return (
-            <View key={item.stat.url}>
+            <Flex marginString="3px 0" key={stat.url}>
                 <Typography type="bodyLarge" textTransform="capitalize">
-                    {item.base_stat} {item.stat.name}
+                    {base_stat} {stat.name}
                 </Typography>
-                <StrengthBackground>
+                <StrengthBackground background={colors.primary}>
                     <StrengthColored width={width} background={colors.secondary} />
                 </StrengthBackground>
-            </View>
+            </Flex>
         );
-    });
+    };
     const avgStrength = averageStrengthCalculator(stats);
     const avgStrengthWidth = Math.round(avgStrength * MULTIPLY_STRENGTH);
 
     return (
-        <View>
-            <Flex alignSelf="center" width="100px">
-                <Typography type="bodyLarge" textTransform="capitalize">
-                    {avgStrength} Average Strength
-                </Typography>
-                <StrengthBackground>
-                    <StrengthColored width={avgStrengthWidth} background={colors.secondary} />
-                </StrengthBackground>
-                {statsRenderer}
-            </Flex>
-        </View>
+        <Flex alignSelf="center" width="200px">
+            <FlatList data={stats} renderItem={statsRenderer} />
+            <Typography type="bodyLarge" textTransform="capitalize">
+                {avgStrength} Avg Strength
+            </Typography>
+            <StrengthBackground background={colors.primary}>
+                <StrengthColored width={avgStrengthWidth} background={colors.secondary} />
+            </StrengthBackground>
+        </Flex>
     );
 };
 

@@ -56,7 +56,7 @@ export const LinesFlex = styled(Flex)<{ borderColor: string }>`
 `;
 
 export const TagCard = styled(Flex)<{ background: string }>`
-  border-radius: 12px;
+  border-radius: 8px;
   background-color: ${({ background }) => background};
 `;
 

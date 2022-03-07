@@ -1,6 +1,7 @@
 //Shared
 export { default as Flex } from './shared/Flex';
 export { default as Button } from './shared/Button';
+export { default as Skeleton } from './shared/Skeleton';
 export { default as Typography } from './shared/Typography';
 
 // View
