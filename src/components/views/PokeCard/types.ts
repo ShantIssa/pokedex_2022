@@ -1,11 +1,9 @@
 import { CardColors } from 'src/hooks/useImageColors/types';
 
 export type PokemonType = {
-    name: string;
     url: string;
 };
 export type PokemonViewType = {
-    name: string;
     id: string;
 };
 
@@ -15,7 +13,6 @@ export type PokeCardProps = {
 
 export type CardHeaderProps = {
     name: string;
-    id: string;
     base_experience: string;
     navigateToPokemonScreen: () => void;
 };
@@ -28,4 +25,9 @@ export type WhiteCardProps = {
     abilities: any;
     types: any;
     averageStrength: number;
+};
+
+export type BottomBarProps = {
+    colors: CardColors;
+    name: string;
 };

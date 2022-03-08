@@ -1,10 +1,14 @@
 import styled from 'styled-components/native';
 
-export const PokemonCard = styled.View<{ background: string }>`
+export const StrengthColored = styled.View<{ background: string; width: number }>`
+  height: 20px;
+  width:  ${({ width }) => width}%;
+  border-radius: 7px;
   background-color: ${({ background }) => background};
-  flex: 1;
+`;
+
+export const StrengthBackground = styled.View<{ background?: string }>`
   width: 100%;
-  border-color: white;
-  align-self: center;
-  padding: 10px
+  background-color: ${({ theme }) => theme.colors.grey};
+  border-radius: 8px;
 `;

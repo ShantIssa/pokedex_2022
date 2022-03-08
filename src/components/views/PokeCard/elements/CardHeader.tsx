@@ -6,7 +6,7 @@ import { CardHeaderProps } from '../types';
 import Button from '../../../shared/Button';
 import Typography from '../../../shared/Typography';
 
-const CardHeader: React.FC<CardHeaderProps> = ({ name, id, base_experience, navigateToPokemonScreen }) => {
+const CardHeader: React.FC<CardHeaderProps> = ({ name, base_experience, navigateToPokemonScreen }) => {
     return (
         <Flex marginString="12px" flexDirection="row" alignItems="center" justifyContent="space-between">
             <View>
@@ -24,9 +24,6 @@ const CardHeader: React.FC<CardHeaderProps> = ({ name, id, base_experience, navi
                             </Typography>
                         </Flex>
                     </Button>
-                    <Typography color="dark" type="h1-small" textAlign="left" textTransform="capitalize">
-                        #{id}
-                    </Typography>
                 </Flex>
             </View>
             <View>

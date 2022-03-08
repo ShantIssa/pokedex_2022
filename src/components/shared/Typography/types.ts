@@ -4,17 +4,7 @@ import { TextStyle } from 'react-native';
 export type TypographyStyleProps = Partial<{
     type: 'body' | 'bodyLarge' | 'bodySmall' | 'label' | 'labelAlt' | 'h1' | 'h1-small' | 'h2' | 'h3' | 'h4';
     fontFamily: 'medium' | 'regular' | 'bold' | 'semiBold';
-    color?:
-        | 'primary'
-        | 'secondary'
-        | 'highlight-red'
-        | 'highlight-gold'
-        | 'outline'
-        | 'muted'
-        | 'light'
-        | 'highlight-green'
-        | 'dark'
-        | 'colour-light';
+    color?: 'primary' | 'secondary' | 'light' | 'dark' | 'med-dark' | 'tinted-dark' | 'tinted-med-dark';
     textAlign: 'left' | 'center' | 'right';
     textTransform?: 'none' | 'uppercase' | 'lowercase' | 'capitalize';
 }>;

@@ -7,6 +7,7 @@ export const BaseFlex = styled.View<FlexProps>`
     ${({ marginString }) => marginString && `margin: ${marginString}`};
     ${({ paddingString }) => paddingString && `padding: ${paddingString}`};
     ${({ width }) => width && `width: ${width}`};
+    ${({ height }) => height && `height: ${height}`};
     ${({ flexDirection }) => flexDirection && `flex-direction: ${flexDirection}`};
     ${({ justifyContent }) => justifyContent && `justify-content: ${justifyContent}`};
     ${({ alignItems }) => alignItems && `align-items: ${alignItems}`};

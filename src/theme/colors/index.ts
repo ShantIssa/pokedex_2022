@@ -6,6 +6,7 @@ const colors = {
     'tinted-dark': '#131b25',
     'tinted-med-dark': '#182735',
     light: '#ffffff',
+    grey: '#d4d4d4',
 } as const;
 
 export default colors;

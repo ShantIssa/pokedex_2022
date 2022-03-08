@@ -45,15 +45,9 @@ const BottomTabNavigator = () => {
         <Tab.Navigator
             initialRouteName={ScreenRoutes.Main}
             screenOptions={({ route }) => ({
-                headerShown: true,
-                headerTitleAlign: 'left',
-                headerTitle: 'Pokédex',
+                headerShown: false,
                 tabBarBounces: false,
                 tabBarShowLabel: false,
-                headerStyle: styles.header,
-                headerShadowVisible: false,
-                headerLeftLabelVisible: true,
-                headerTitleStyle: styles.title,
                 tabBarStyle: styles.tabBarStyle,
                 tabBarActiveTintColor: activeColor,
                 tabBarInactiveTintColor: inactiveColor,

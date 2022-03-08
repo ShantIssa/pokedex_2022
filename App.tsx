@@ -5,6 +5,7 @@ import { Provider as ReduxProvider } from 'react-redux';
 import { ThemeProvider } from 'styled-components/native';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { PersistGate as PersistProvider } from 'redux-persist/integration/react';
+import { Host } from 'react-native-portalize';
 
 import { baseTheme } from 'src/theme';
 import Navigation from 'src/navigation';
@@ -20,7 +21,9 @@ const App = () => {
             <PersistProvider loading={null} persistor={persistor}>
                 <ThemeProvider theme={baseTheme}>
                     <QueryClientProvider client={queryClient}>
-                        <Navigation />
+                        <Host>
+                            <Navigation />
+                        </Host>
                     </QueryClientProvider>
                 </ThemeProvider>
             </PersistProvider>

@@ -13,7 +13,6 @@ const useImageColors = (uri: string) => {
     });
 
     const colorSetter = (result: ImageColorsResult) => {
-        console.log(result, result.platform);
         switch (result.platform) {
             case 'android':
                 setColor({

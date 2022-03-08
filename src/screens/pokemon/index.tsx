@@ -1,41 +1,42 @@
 import React from 'react';
-import { useQuery } from 'react-query';
-import { Image, View } from 'react-native';
+import StickyParallaxHeader, { Tab } from 'react-native-sticky-parallax-header';
 
-import { getPokemonById } from 'src/services/api/pokemons';
-import Stats from 'src/screens/pokemon/components/Stats';
+import { PokemonTab } from 'src/components';
+import { capitalize } from 'src/utils/capitalize';
+import HeaderForeground from 'src/screens/pokemon/components/HeaderForeground';
 
-import { PokemonCard } from './styles';
-import Abilities from './components/Abilities';
+import { PokemonScreenProps } from './types';
 
-import { Typography } from '../../components';
+const Pokemon: React.FC<PokemonScreenProps> = ({ route }) => {
+    const { colors, evolutionNames } = route.params;
 
-const Pokemon: React.FC<any> = ({ route }) => {
-    const { id, name, colors } = route.params;
-    const { data, isLoading } = useQuery(id, getPokemonById);
-
-    const imgUri = data?.sprites?.other['official-artwork']?.front_default;
-    const abilities = data?.abilities;
-    const stats = data?.stats;
+    const tabsRenderer = (pokeNames: string[]) =>
+        pokeNames.map((name) => ({
+            title: capitalize(name),
+            content: <PokemonTab colors={colors} name={name} />,
+        }));
 
     return (
-        <PokemonCard background={'white'}>
-            {!isLoading && (
-                <View style={{ alignSelf: 'center' }}>
-                    <Image source={{ uri: imgUri }} style={{ height: 200, width: 200 }} />
-                    <Typography
-                        type="h1"
-                        textAlign="center"
-                        textTransform="capitalize"
-                        textStyle={{ color: colors.primary }}
-                    >
-                        {name}
-                    </Typography>
-                    <Abilities colors={colors} abilities={abilities} />
-                    <Stats stats={stats} />
-                </View>
-            )}
-        </PokemonCard>
+        <StickyParallaxHeader
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            logo={null}
+            bounces={false}
+            headerHeight={30}
+            snapToEdge={false}
+            parallaxHeight={100}
+            decelerationRate={300}
+            headerType="TabbedHeader"
+            rememberTabScrollPosition
+            backgroundColor={colors.primary}
+            tabTextActiveStyle={{ fontWeight: '600' }}
+            foreground={() => <HeaderForeground colors={colors} />}
+            tabs={tabsRenderer(evolutionNames) as unknown as Tab[]}
+            tabTextContainerActiveStyle={{ backgroundColor: '#CCCDC6' }}
+            tabsContainerStyle={{ width: '100%', justifyContent: 'space-evenly' }}
+            tabTextStyle={{ fontWeight: '600', padding: 8, color: colors.secondary }}
+            tabTextContainerStyle={{ backgroundColor: '#E8E9EB', borderRadius: 8 }}
+        />
     );
 };
 
