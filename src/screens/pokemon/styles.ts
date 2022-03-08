@@ -10,7 +10,5 @@ export const StrengthColored = styled.View<{ background: string; width: number }
 export const StrengthBackground = styled.View<{ background?: string }>`
   width: 100%;
   background-color: ${({ theme }) => theme.colors.grey};
-  border-width: 1px;
   border-radius: 8px;
-  border-color: ${({ background }) => background};
 `;

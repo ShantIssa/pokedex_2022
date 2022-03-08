@@ -26,3 +26,8 @@ export type WhiteCardProps = {
     types: any;
     averageStrength: number;
 };
+
+export type BottomBarProps = {
+    colors: CardColors;
+    name: string;
+};

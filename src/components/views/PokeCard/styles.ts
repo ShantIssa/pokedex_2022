@@ -28,7 +28,7 @@ export const PokeballCardStyled = styled.View`
   right: 10px;
 `;
 
-export const BottomBarWrapper = styled.View`
+export const BottomBarWrapper = styled.View<{ borderColor: string }>`
   height: 53px;
   align-items: center;
   flex-direction: row;
@@ -36,6 +36,10 @@ export const BottomBarWrapper = styled.View`
   border-bottom-right-radius: 8px;
   border-bottom-left-radius: 8px;
   justify-content: space-around;
+  border-bottom-width: 2px;
+  border-right-width: 1px;
+  border-left-width: 1px;
+  border-color:${({ borderColor }) => borderColor};
 `;
 
 export const WhiteCardWrapper = styled.View`

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useQuery } from 'react-query';
 import { useNavigation } from '@react-navigation/native';
+import Toast from 'react-native-toast-message';
 
 import { useImageColors } from 'src/hooks';
 import { PokeballCard } from 'src/assets/icons';
@@ -8,6 +9,7 @@ import { ScreenRoutes } from 'src/navigation/routes';
 import { averageStrengthCalculator } from 'src/utils/averageStrengthCalculator';
 import { getPokemonByEvlotuionId, getSinglePokemon } from 'src/services/api/pokemons';
 import { MainScreenNavigatorStack } from 'src/navigation/navigators/main-screen-navigator/types';
+import { toastConfig } from 'src/utils/toastConfig';
 
 import BottomBar from './BottomBar';
 import WhiteCard from './WhiteCard';
@@ -73,7 +75,7 @@ const Pokemon: React.FC<PokemonViewType> = ({ id }) => {
                 abilities={pokemon.abilities}
                 averageStrength={Math.round(averageStrength)}
             />
-            <BottomBar />
+            <BottomBar name={pokemon.name} colors={colors} />
         </Card>
     );
 };
