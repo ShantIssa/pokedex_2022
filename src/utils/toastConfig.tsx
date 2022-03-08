@@ -6,7 +6,7 @@ import { Flex } from 'src/components';
 import { PokeballGrey } from 'src/assets/icons';
 
 export const toastConfig = {
-    catch: ({ props: { colors, name, caught } }: any) => {
+    catch: ({ props: { colors, name } }: any) => {
         return (
             <BaseToast
                 renderLeadingIcon={() => (
@@ -21,7 +21,33 @@ export const toastConfig = {
                     fontFamily: fonts.medium,
                     fontWeight: '400',
                 }}
-                text1={!caught ? 'Release' : 'Catch'}
+                text1="Catch"
+                text2={name}
+                text2Style={{
+                    fontSize: 20,
+                    fontWeight: '600',
+                    fontFamily: fonts.medium,
+                    color: colors.primary,
+                }}
+            />
+        );
+    },
+    release: ({ props: { colors, name, caught } }: any) => {
+        return (
+            <BaseToast
+                renderLeadingIcon={() => (
+                    <Flex alignItems="center" paddingString="15px">
+                        <PokeballGrey />
+                    </Flex>
+                )}
+                style={{ borderLeftColor: colors.secondary, borderRightColor: colors.secondary, borderRightWidth: 5 }}
+                contentContainerStyle={{ paddingHorizontal: 15 }}
+                text1Style={{
+                    fontSize: 16,
+                    fontFamily: fonts.medium,
+                    fontWeight: '400',
+                }}
+                text1="Release"
                 text2={name}
                 text2Style={{
                     fontSize: 20,
