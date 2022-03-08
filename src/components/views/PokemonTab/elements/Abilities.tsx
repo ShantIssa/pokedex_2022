@@ -7,8 +7,13 @@ import Typography from '../../../shared/Typography';
 
 const Abilities: React.FC<AbilitiesProps> = ({ abilities, colors }) => {
     const renderAbilities = abilities.map((item) => (
-        <AbilityWrapper backgroundColor={colors.primary} key={item.ability.url}>
-            <Typography type="h4" textAlign="center" textTransform="capitalize" textStyle={{ color: colors.secondary }}>
+        <AbilityWrapper backgroundColor="black" key={item.ability.url}>
+            <Typography
+                type="h4"
+                textAlign="center"
+                textTransform="capitalize"
+                textStyle={{ color: 'white', fontWeight: '600' }}
+            >
                 {item.ability.name}
             </Typography>
         </AbilityWrapper>

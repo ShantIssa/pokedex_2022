@@ -1,8 +1,9 @@
 import React from 'react';
 import { BaseToast } from 'react-native-toast-message';
 
-import { PokeballGrey } from 'src/assets/icons';
+import { fonts } from 'src/theme';
 import { Flex } from 'src/components';
+import { PokeballGrey } from 'src/assets/icons';
 
 export const toastConfig = {
     catch: ({ props: { colors, name, caught } }: any) => {
@@ -17,6 +18,7 @@ export const toastConfig = {
                 contentContainerStyle={{ paddingHorizontal: 15 }}
                 text1Style={{
                     fontSize: 16,
+                    fontFamily: fonts.medium,
                     fontWeight: '400',
                 }}
                 text1={!caught ? 'Release' : 'Catch'}
@@ -24,6 +26,7 @@ export const toastConfig = {
                 text2Style={{
                     fontSize: 20,
                     fontWeight: '600',
+                    fontFamily: fonts.medium,
                     color: colors.primary,
                 }}
             />

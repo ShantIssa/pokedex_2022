@@ -29,12 +29,12 @@ const Pokemon: React.FC<PokemonScreenProps> = ({ route }) => {
             headerType="TabbedHeader"
             rememberTabScrollPosition
             backgroundColor={colors.primary}
+            foreground={() => <HeaderForeground />}
             tabTextActiveStyle={{ fontWeight: '600' }}
-            foreground={() => <HeaderForeground colors={colors} />}
             tabs={tabsRenderer(evolutionNames) as unknown as Tab[]}
             tabTextContainerActiveStyle={{ backgroundColor: '#CCCDC6' }}
             tabsContainerStyle={{ width: '100%', justifyContent: 'space-evenly' }}
-            tabTextStyle={{ fontWeight: '600', padding: 8, color: colors.secondary }}
+            tabTextStyle={{ fontWeight: '600', padding: 8, color: 'black' }}
             tabTextContainerStyle={{ backgroundColor: '#E8E9EB', borderRadius: 8 }}
         />
     );

@@ -37,8 +37,8 @@ export const BottomBarWrapper = styled.View<{ borderColor: string }>`
   border-bottom-left-radius: 8px;
   justify-content: space-around;
   border-bottom-width: 2px;
-  border-right-width: 1px;
-  border-left-width: 1px;
+  border-right-width: 2px;
+  border-left-width: 2px;
   border-color:${({ borderColor }) => borderColor};
 `;
 

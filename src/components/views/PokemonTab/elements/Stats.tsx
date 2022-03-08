@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, View } from 'react-native';
+import { FlatList } from 'react-native';
 
 import { Flex, Typography } from 'src/components';
 import { MULTIPLY_STRENGTH } from 'src/constants/constants';

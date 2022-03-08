@@ -5,9 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { Flex, Typography } from 'src/components';
 import { LeftArrow } from 'src/assets/icons';
 
-import { HeaderForegroundProps } from '../types';
-
-const HeaderForeground: React.FC<HeaderForegroundProps> = ({ colors }) => {
+const HeaderForeground = () => {
     const navigation = useNavigation();
 
     return (
@@ -15,13 +13,7 @@ const HeaderForeground: React.FC<HeaderForegroundProps> = ({ colors }) => {
             <TouchableOpacity onPress={() => navigation.goBack()}>
                 <LeftArrow />
             </TouchableOpacity>
-            <Typography
-                type="h1"
-                textAlign="center"
-                fontFamily="regular"
-                textTransform="capitalize"
-                textStyle={{ color: colors.secondary }}
-            >
+            <Typography type="h1" textAlign="center" fontFamily="regular" color="light" textTransform="capitalize">
                 Evolution
             </Typography>
             <Flex marginString="0 9px" />

@@ -16,7 +16,7 @@ const WhiteCard: React.FC<WhiteCardProps> = ({ averageStrength, height, name, we
 
     const typesTags = types.map(({ slot, type }: any) => {
         return (
-            <TagCard paddingString="5px 12px" background={colors.tertiary} marginString="0 12px 0 0" key={slot}>
+            <TagCard paddingString="5px 12px" background={'black'} marginString="0 12px 0 0" key={slot}>
                 <Typography color="light" textTransform="capitalize" type="h3" fontFamily="bold">
                     {type.name}
                 </Typography>
