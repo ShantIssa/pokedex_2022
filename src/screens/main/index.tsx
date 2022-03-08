@@ -4,7 +4,7 @@ import { useInfiniteQuery } from 'react-query';
 import { useScrollToTop } from '@react-navigation/native';
 
 import { PokeCard, Typography } from 'src/components';
-import { getPokemons, getPokemonsEvolutionChain } from 'src/services/api/pokemons';
+import { getPokemonsEvolutionChain } from 'src/services/api/pokemons';
 
 const Main = () => {
     const ref = React.useRef(null);

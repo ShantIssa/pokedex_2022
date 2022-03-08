@@ -1,6 +1,7 @@
+type Pokemon = {
+    name: string;
+};
+
 export type PokemonsState = {
-    pokemons: {
-        name: string;
-        url: string;
-    }[];
+    pokemons: Pokemon[];
 };

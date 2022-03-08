@@ -65,7 +65,7 @@ export const TagCard = styled(Flex)<{ background: string }>`
 `;
 
 export const PokeButton = styled.TouchableOpacity`
-  width: 80px;
+  width: 100px;
   height: 53px;
   align-items: center;
   justify-content: center;
