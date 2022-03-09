@@ -61,20 +61,19 @@ export const toastConfig = {
     limit: ({ props: { colors, name, slotsQuantity } }: any) => {
         return (
             <BaseToast
-                renderLeadingIcon={() => (
-                    <Flex alignItems="center" paddingString="15px">
-                        <PokeballGrey />
-                    </Flex>
-                )}
-                style={{ borderLeftColor: colors.secondary, borderRightColor: colors.secondary, borderRightWidth: 5 }}
+                style={{
+                    borderLeftColor: colors.secondary,
+                    borderRightColor: colors.secondary,
+                    borderRightWidth: 5,
+                }}
                 contentContainerStyle={{ paddingHorizontal: 15 }}
                 text1Style={{
-                    fontSize: 14,
+                    fontSize: 16,
                     fontFamily: fonts.medium,
                     fontWeight: '400',
                 }}
-                text1={`Cannot catch ${name}`}
-                text2={`You slots are limited to ${slotsQuantity}`}
+                text2={`Slots are limited to ${slotsQuantity}`}
+                text1={`Gain more XP to catch ${name}`}
                 text2Style={{
                     fontSize: 16,
                     fontWeight: '600',

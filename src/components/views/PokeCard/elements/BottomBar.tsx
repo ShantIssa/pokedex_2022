@@ -7,8 +7,8 @@ import { PokeballGrey } from 'src/assets/icons';
 import { capitalize } from 'src/utils/capitalize';
 import { Flex, Typography } from 'src/components';
 import { toastConfig } from 'src/utils/toastConfig';
-import { selectSavedPokemons, selectSlots } from 'src/redux/slices/pokemons/selectors';
 import { savePokemon, removePokemon } from 'src/redux/slices/pokemons/slice';
+import { selectSavedPokemons, selectSlots } from 'src/redux/slices/pokemons/selectors';
 
 import { BottomBarProps } from '../types';
 import { BottomBarWrapper, PokeButton } from '../styles';
@@ -17,7 +17,7 @@ const BottomBar: React.FC<BottomBarProps> = ({ colors, name }) => {
     const dispatch = useDispatch();
     const slotsQuantity = useSelector(selectSlots);
     const savedPokemons = useSelector(selectSavedPokemons);
-    console.log(savedPokemons, 'savedPokemons');
+
     const caught = savedPokemons.some((item) => item.name === name);
 
     const showToast = () => {
@@ -26,6 +26,13 @@ const BottomBar: React.FC<BottomBarProps> = ({ colors, name }) => {
                 type: 'limit',
                 props: { colors, name: capitalize(name), slotsQuantity },
             });
+            if (caught) {
+                Toast.show({
+                    type: 'release',
+                    props: { colors, name: capitalize(name) },
+                });
+                dispatch(removePokemon({ name }));
+            }
         } else {
             if (!caught) {
                 dispatch(savePokemon(name));
@@ -33,12 +40,6 @@ const BottomBar: React.FC<BottomBarProps> = ({ colors, name }) => {
                     type: 'catch',
                     props: { colors, name: capitalize(name) },
                 });
-            } else {
-                Toast.show({
-                    type: 'release',
-                    props: { colors, name: capitalize(name) },
-                });
-                dispatch(removePokemon({ name }));
             }
         }
     };
