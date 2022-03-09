@@ -15,26 +15,31 @@ import { BottomBarWrapper, PokeButton } from '../styles';
 
 const BottomBar: React.FC<BottomBarProps> = ({ colors, name }) => {
     const dispatch = useDispatch();
-    const savedPokemons = useSelector(selectSavedPokemons).filter((item) => item.name);
     const slotsQuantity = useSelector(selectSlots);
-    const pokemonIndex = savedPokemons.findIndex((item) => item.name === name);
-    const caught = pokemonIndex !== -1;
-    console.warn(slotsQuantity);
+    const savedPokemons = useSelector(selectSavedPokemons);
+    console.log(savedPokemons, 'savedPokemons');
+    const caught = savedPokemons.some((item) => item.name === name);
+
     const showToast = () => {
-        if (!caught) {
-            if (slotsQuantity <= savedPokemons.length) {
-                dispatch(savePokemon({ name }));
+        if (slotsQuantity === savedPokemons.length) {
+            Toast.show({
+                type: 'limit',
+                props: { colors, name: capitalize(name), slotsQuantity },
+            });
+        } else {
+            if (!caught) {
+                dispatch(savePokemon(name));
                 Toast.show({
                     type: 'catch',
                     props: { colors, name: capitalize(name) },
                 });
+            } else {
+                Toast.show({
+                    type: 'release',
+                    props: { colors, name: capitalize(name) },
+                });
+                dispatch(removePokemon({ name }));
             }
-        } else {
-            Toast.show({
-                type: 'release',
-                props: { colors, name: capitalize(name) },
-            });
-            dispatch(removePokemon({ name }));
         }
     };
 

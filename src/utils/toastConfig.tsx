@@ -32,7 +32,7 @@ export const toastConfig = {
             />
         );
     },
-    release: ({ props: { colors, name, caught } }: any) => {
+    release: ({ props: { colors, name } }: any) => {
         return (
             <BaseToast
                 renderLeadingIcon={() => (
@@ -51,6 +51,32 @@ export const toastConfig = {
                 text2={name}
                 text2Style={{
                     fontSize: 20,
+                    fontWeight: '600',
+                    fontFamily: fonts.medium,
+                    color: colors.primary,
+                }}
+            />
+        );
+    },
+    limit: ({ props: { colors, name, slotsQuantity } }: any) => {
+        return (
+            <BaseToast
+                renderLeadingIcon={() => (
+                    <Flex alignItems="center" paddingString="15px">
+                        <PokeballGrey />
+                    </Flex>
+                )}
+                style={{ borderLeftColor: colors.secondary, borderRightColor: colors.secondary, borderRightWidth: 5 }}
+                contentContainerStyle={{ paddingHorizontal: 15 }}
+                text1Style={{
+                    fontSize: 14,
+                    fontFamily: fonts.medium,
+                    fontWeight: '400',
+                }}
+                text1={`Cannot catch ${name}`}
+                text2={`You slots are limited to ${slotsQuantity}`}
+                text2Style={{
+                    fontSize: 16,
                     fontWeight: '600',
                     fontFamily: fonts.medium,
                     color: colors.primary,

@@ -10,10 +10,9 @@ import { Wrapper } from '../../components';
 
 const Settings = () => {
     const savedPokemons = useSelector(selectSavedPokemons).filter((item) => item.name);
-    console.log(savedPokemons);
     return (
         <Wrapper>
-            <FlatList data={savedPokemons} renderItem={({ item }) => <SavedPokemons name={item.name} />} />
+            <FlatList data={savedPokemons} renderItem={({ item }) => <SavedPokemons name={item?.name} />} />
         </Wrapper>
     );
 };
