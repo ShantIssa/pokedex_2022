@@ -1,10 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import { Flex, Typography } from 'src/components';
-import { selectSlots, selectExperience, selectSavedPokemons } from 'src/redux/slices/pokemons/selectors';
 import { PokeballGrey } from 'src/assets/icons';
 import { IS_IOS } from 'src/constants/constants';
+import { Flex, Typography } from 'src/components';
+import { selectSlots, selectExperience, selectSavedPokemons } from 'src/redux/slices/pokemons/selectors';
 
 const SavedPokemonsHeader = () => {
     const slots = useSelector(selectSlots);
