@@ -3,12 +3,12 @@ import { View } from 'react-native';
 import { useTheme } from 'styled-components/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import { Settings } from 'src/screens';
 import { Home, HomeRed, Save, SaveRed } from 'src/assets/icons';
 
 import { styles } from './styles';
 
 import MainScreenNavigator from '../main-screen-navigator';
+import SavedPokemonsNavigator from '../saved-pokemons-screen-navigator';
 import { NavigatorRoutes, ScreenRoutes } from '../../routes';
 
 const Tab = createBottomTabNavigator();
@@ -16,7 +16,7 @@ const Tab = createBottomTabNavigator();
 const getTabIconsMapping = (route: NavigatorRoutes, focused: boolean) => {
     const iconMap: { [key in NavigatorRoutes]?: () => any } = {
         [NavigatorRoutes.Main]: () => (focused ? HomeRed : Home),
-        [NavigatorRoutes.Settings]: () => (focused ? SaveRed : Save),
+        [NavigatorRoutes.SavedPokemons]: () => (focused ? SaveRed : Save),
     };
     return iconMap[route]?.();
 };
@@ -56,7 +56,7 @@ const BottomTabNavigator = () => {
             })}
         >
             <Tab.Screen name={NavigatorRoutes.Main} component={MainScreenNavigator} />
-            <Tab.Screen name={ScreenRoutes.Settings} component={Settings} />
+            <Tab.Screen name={NavigatorRoutes.SavedPokemons} component={SavedPokemonsNavigator} />
         </Tab.Navigator>
     );
 };

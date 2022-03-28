@@ -38,8 +38,6 @@ export const StyledText = styled.Text<TypographyStyleProps>`
               return `color: ${theme.colors.secondary}`;
           case 'light':
               return `color: ${theme.colors.light}`;
-          case 'muted':
-              return `color: ${theme.colors.light}; opacity: 0.5`;
           case 'dark':
               return `color: ${theme.colors.dark}`;
           default:

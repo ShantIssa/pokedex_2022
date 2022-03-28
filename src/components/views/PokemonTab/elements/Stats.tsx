@@ -1,12 +1,13 @@
 import React from 'react';
-import { FlatList, View } from 'react-native';
+import { FlatList } from 'react-native';
 
-import { Flex, Typography } from 'src/components';
 import { MULTIPLY_STRENGTH } from 'src/constants/constants';
 import { averageStrengthCalculator } from 'src/utils/averageStrengthCalculator';
 import { StrengthBackground, StrengthColored } from 'src/screens/pokemon/styles';
 
 import { StatsProps } from '../types';
+import Flex from '../../../shared/Flex';
+import Typography from '../../../shared/Typography';
 
 const Stats: React.FC<StatsProps> = ({ stats, colors }) => {
     const statsRenderer = ({ item: { base_stat, stat } }: any) => {
@@ -27,7 +28,7 @@ const Stats: React.FC<StatsProps> = ({ stats, colors }) => {
 
     return (
         <Flex alignSelf="center" width="200px">
-            <FlatList data={stats} renderItem={statsRenderer} />
+            <FlatList scrollEnabled={false} data={stats} renderItem={statsRenderer} />
             <Typography type="bodyLarge" textTransform="capitalize">
                 {avgStrength} Avg Strength
             </Typography>

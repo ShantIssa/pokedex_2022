@@ -16,7 +16,7 @@ export const PokeImg = styled.Image`
 
 export const AbilityWrapper = styled.View<{ backgroundColor: string }>`
     height:30px;
-    padding: 0 5px;
+    padding: 0 8px;
     margin: 10px 5px;
     border-radius: 8px;
     align-items: center;

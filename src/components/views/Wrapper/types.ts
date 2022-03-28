@@ -1,4 +1,3 @@
-
 export type WrapperProps = {
-    children : any
-}
+    children: any;
+};
