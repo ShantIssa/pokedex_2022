@@ -4,6 +4,7 @@ import { BaseToast } from 'react-native-toast-message';
 import { fonts } from 'src/theme';
 import { PokeballGrey } from 'src/assets/icons';
 import Flex from 'src/components/shared/Flex';
+import { IS_ANDROID } from 'src/constants/constants';
 
 export const toastConfig = {
     catch: ({ props: { colors, name } }: any) => {
@@ -14,7 +15,12 @@ export const toastConfig = {
                         <PokeballGrey />
                     </Flex>
                 )}
-                style={{ borderLeftColor: colors.secondary, borderRightColor: colors.secondary, borderRightWidth: 5 }}
+                style={{
+                    marginTop: IS_ANDROID ? -30 : 0,
+                    borderLeftColor: colors.secondary,
+                    borderRightColor: colors.secondary,
+                    borderRightWidth: 5,
+                }}
                 contentContainerStyle={{ paddingHorizontal: 15 }}
                 text1Style={{
                     fontSize: 16,
@@ -40,7 +46,12 @@ export const toastConfig = {
                         <PokeballGrey />
                     </Flex>
                 )}
-                style={{ borderLeftColor: colors.secondary, borderRightColor: colors.secondary, borderRightWidth: 5 }}
+                style={{
+                    marginTop: IS_ANDROID ? -30 : 0,
+                    borderLeftColor: colors.secondary,
+                    borderRightColor: colors.secondary,
+                    borderRightWidth: 5,
+                }}
                 contentContainerStyle={{ paddingHorizontal: 15 }}
                 text1Style={{
                     fontSize: 16,
@@ -62,6 +73,7 @@ export const toastConfig = {
         return (
             <BaseToast
                 style={{
+                    marginTop: IS_ANDROID ? -30 : 0,
                     borderRightWidth: 5,
                     borderLeftColor: colors.secondary,
                     borderRightColor: colors.secondary,

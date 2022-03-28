@@ -7,6 +7,7 @@ import { PokemonsState } from './types';
 const initialPokemonsState: PokemonsState = {
     pokemons: [],
     slots: 5,
+    xp: 0,
 };
 
 const pokemonsState = createSlice({

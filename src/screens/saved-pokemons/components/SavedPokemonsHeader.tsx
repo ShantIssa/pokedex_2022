@@ -1,15 +1,29 @@
 import React from 'react';
-import { View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { useSelector } from 'react-redux';
 
 import { Flex, Typography } from 'src/components';
+import { selectSlots, selectExperience, selectSavedPokemons } from 'src/redux/slices/pokemons/selectors';
+import { PokeballGrey } from 'src/assets/icons';
+import { IS_IOS } from 'src/constants/constants';
 
-const SavedPokemonsHeader = () => (
-    <SafeAreaView>
-        <Flex paddingString="10px 0 ">
-            <Typography type="bodyLarge">Saved</Typography>
+const SavedPokemonsHeader = () => {
+    const slots = useSelector(selectSlots);
+    const experience = useSelector(selectExperience);
+    const savedPokemons = useSelector(selectSavedPokemons);
+    return (
+        <Flex
+            alignItems="center"
+            flexDirection="row"
+            justifyContent="space-between"
+            paddingString={IS_IOS ? '40px 10px 10px 10px' : '10px 10px'}
+        >
+            <PokeballGrey />
+            <Typography type="bodyLarge">
+                Slots: {savedPokemons.length}/{slots}
+            </Typography>
+            <Typography type="bodyLarge">XP: {experience}</Typography>
         </Flex>
-    </SafeAreaView>
-);
+    );
+};
 
 export default SavedPokemonsHeader;

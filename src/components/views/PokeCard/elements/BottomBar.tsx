@@ -6,9 +6,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { PokeballGrey } from 'src/assets/icons';
 import { capitalize } from 'src/utils/capitalize';
 import { toastConfig } from 'src/utils/toastConfig';
+import { PokemonType } from 'src/redux/slices/pokemons/types';
 import { savePokemon, removePokemon } from 'src/redux/slices/pokemons/slice';
 import { selectSavedPokemons, selectSlots } from 'src/redux/slices/pokemons/selectors';
-import { PokemonType } from 'src/redux/slices/pokemons/types';
 
 import Flex from '../../../shared/Flex';
 import Typography from '../../../shared/Typography';
@@ -24,16 +24,17 @@ const BottomBar: React.FC<BottomBarProps> = ({ colors, name, pokemon }) => {
 
     const showToast = () => {
         if (slotsQuantity === savedPokemons.length) {
-            Toast.show({
-                type: 'limit',
-                props: { colors, name: capitalize(name), slotsQuantity },
-            });
             if (caught) {
                 Toast.show({
                     type: 'release',
                     props: { colors, name: capitalize(name) },
                 });
                 dispatch(removePokemon({ name }));
+            } else {
+                Toast.show({
+                    type: 'limit',
+                    props: { colors, name: capitalize(name), slotsQuantity },
+                });
             }
         } else {
             if (!caught) {
@@ -42,6 +43,13 @@ const BottomBar: React.FC<BottomBarProps> = ({ colors, name, pokemon }) => {
                     type: 'catch',
                     props: { colors, name: capitalize(name) },
                 });
+            }
+            if (caught) {
+                Toast.show({
+                    type: 'release',
+                    props: { colors, name: capitalize(name) },
+                });
+                dispatch(removePokemon({ name }));
             }
         }
     };

@@ -19,7 +19,6 @@ export const TitleWrapper = styled.View<{ backgroundColor: string }>`
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
   background-color: ${({ backgroundColor }) => backgroundColor};
-
 `;
 
 export const PokeImage = styled.Image`

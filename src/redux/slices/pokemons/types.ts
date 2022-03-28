@@ -113,4 +113,5 @@ export type PokemonType = {
 export type PokemonsState = {
     pokemons: PokemonType[];
     slots: number;
+    xp: number;
 };

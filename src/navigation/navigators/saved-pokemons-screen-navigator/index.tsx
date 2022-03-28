@@ -9,7 +9,12 @@ const Stack = createStackNavigator();
 
 const SavedPokemonsScreen = () => {
     return (
-        <Stack.Navigator screenOptions={{ headerShown: true, header: SavedPokemonsHeader }}>
+        <Stack.Navigator
+            screenOptions={{
+                headerShown: true,
+                header: SavedPokemonsHeader,
+            }}
+        >
             <Stack.Screen name={ScreenRoutes.SavedPokemons} component={SavedPokemons} />
         </Stack.Navigator>
     );

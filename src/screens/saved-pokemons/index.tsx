@@ -15,6 +15,8 @@ const SavedPokemons = () => {
             <FlatList
                 bounces={false}
                 data={savedPokemons}
+                pinchGestureEnabled={true}
+                showsVerticalScrollIndicator={false}
                 renderItem={({ item }) => <SavedPokemonRow pokemon={item} />}
             />
         </Wrapper>
