@@ -12,7 +12,7 @@ export const SavedPokemonCard = styled.View<{ borderColor: string }>`
 export const PokeballWrapper = styled.View`
   position: absolute;
   right:8px;
-  top:8px
+  top: 35px;
 `;
 
 export const TitleWrapper = styled.View<{ backgroundColor: string }>`

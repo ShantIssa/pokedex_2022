@@ -4,21 +4,21 @@ import { FlatList } from 'react-native';
 
 import { selectSavedPokemons } from 'src/redux/slices/pokemons/selectors';
 
-import SavedPokemons from './components/SavedPokemons';
+import SavedPokemonRow from './components/SavedPokemonRow';
 
 import { Wrapper } from '../../components';
 
-const Settings = () => {
+const SavedPokemons = () => {
     const savedPokemons = useSelector(selectSavedPokemons);
     return (
         <Wrapper>
             <FlatList
                 bounces={false}
                 data={savedPokemons}
-                renderItem={({ item }) => <SavedPokemons pokemon={item} />}
+                renderItem={({ item }) => <SavedPokemonRow pokemon={item} />}
             />
         </Wrapper>
     );
 };
 
-export default Settings;
+export default SavedPokemons;

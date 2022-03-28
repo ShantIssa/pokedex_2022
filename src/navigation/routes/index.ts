@@ -1,10 +1,10 @@
 export enum ScreenRoutes {
     Main = 'Main',
     Pokemon = 'Pokemon',
-    Settings = 'Settings',
+    SavedPokemons = 'SavedPokemons',
 }
 
 export enum NavigatorRoutes {
     Main = 'MainScreen',
-    Settings = 'Settings',
+    SavedPokemons = 'SavedPokemonsScreen',
 }

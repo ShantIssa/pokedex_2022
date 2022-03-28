@@ -2,12 +2,12 @@ import React from 'react';
 
 import { Typography } from 'src/components';
 import { useImageColors } from 'src/hooks';
-import PokeBall from 'src/assets/icons/cards/Pokeball';
+import { PokeballCard } from 'src/assets/icons';
 
 import { SavedPokemonsProps } from '../types';
 import { SavedPokemonCard, PokeImage, PokeballWrapper, TitleWrapper } from '../styles';
 
-const SavedPokemons: React.FC<SavedPokemonsProps> = ({ pokemon }) => {
+const SavedPokemonRow: React.FC<SavedPokemonsProps> = ({ pokemon }) => {
     const img = pokemon.sprites.other['official-artwork'].front_default;
     const { colors } = useImageColors(img || '');
     return (
@@ -23,7 +23,7 @@ const SavedPokemons: React.FC<SavedPokemonsProps> = ({ pokemon }) => {
                 </Typography>
             </TitleWrapper>
             <PokeballWrapper>
-                <PokeBall ballColor={colors.secondary} />
+                <PokeballCard ballColor={colors.secondary} />
             </PokeballWrapper>
 
             <PokeImage source={{ uri: img || '' }} />
@@ -31,4 +31,4 @@ const SavedPokemons: React.FC<SavedPokemonsProps> = ({ pokemon }) => {
     );
 };
 
-export default SavedPokemons;
+export default SavedPokemonRow;
