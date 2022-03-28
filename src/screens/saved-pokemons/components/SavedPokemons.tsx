@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { Flex, Typography } from 'src/components';
-import PokeBall from 'src/assets/icons/cards/Pokeball';
+import { Typography } from 'src/components';
 import { useImageColors } from 'src/hooks';
-import { Pokemon as SinglePokemonType } from 'src/redux/slices/pokemons/types';
+import PokeBall from 'src/assets/icons/cards/Pokeball';
 
+import { SavedPokemonsProps } from '../types';
 import { SavedPokemonCard, PokeImage, PokeballWrapper, TitleWrapper } from '../styles';
 
-const SavedPokemons: React.FC<SinglePokemonType> = ({ pokemon }) => {
+const SavedPokemons: React.FC<SavedPokemonsProps> = ({ pokemon }) => {
     const img = pokemon.sprites.other['official-artwork'].front_default;
     const { colors } = useImageColors(img || '');
     return (
