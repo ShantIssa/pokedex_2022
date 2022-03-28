@@ -12,7 +12,7 @@ const persistConfig = {
     key: 'root',
     version: 1,
     storage: AsyncStorage,
-    blacklist: ['pokemons'],
+    blacklist: [],
 };
 
 const slices = persistReducer(persistConfig, rootReducer);

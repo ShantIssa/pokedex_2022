@@ -73,7 +73,7 @@ const Pokemon: React.FC<PokemonViewType> = ({ id }) => {
                 abilities={pokemon.abilities}
                 averageStrength={Math.round(averageStrength)}
             />
-            <BottomBar name={pokemon.name} colors={colors} />
+            <BottomBar name={pokemon.name} pokemon={pokemon} colors={colors} />
         </Card>
     );
 };

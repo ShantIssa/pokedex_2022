@@ -30,4 +30,5 @@ export type WhiteCardProps = {
 export type BottomBarProps = {
     colors: CardColors;
     name: string;
+    pokemon: any;
 };

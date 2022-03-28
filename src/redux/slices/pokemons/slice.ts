@@ -18,11 +18,13 @@ const pokemonsState = createSlice({
         },
         savePokemon(state, action: PayloadAction<any>) {
             if (state.pokemons.length < state.slots) {
-                state.pokemons = [...state.pokemons, { name: action.payload }];
+                state.pokemons = [...state.pokemons, action.payload];
             }
         },
         removePokemon(state, action: PayloadAction<any>) {
-            state.pokemons = state.pokemons.filter((item) => item.name !== action.payload.name);
+            state.pokemons = state.pokemons.filter((item) => {
+                return item.name !== action.payload.name;
+            });
         },
     },
 });
@@ -30,7 +32,7 @@ const pokemonsState = createSlice({
 export const { setSlots } = pokemonsState.actions;
 export const { removePokemon } = pokemonsState.actions;
 
-export const savePokemon = (name: string) => (dispatch: AppDispatch) => {
-    dispatch(pokemonsState.actions.savePokemon(name));
+export const savePokemon = (pokemon: any) => (dispatch: AppDispatch) => {
+    dispatch(pokemonsState.actions.savePokemon(pokemon));
 };
 export default pokemonsState.reducer;

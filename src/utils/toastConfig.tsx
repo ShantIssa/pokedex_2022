@@ -62,9 +62,9 @@ export const toastConfig = {
         return (
             <BaseToast
                 style={{
+                    borderRightWidth: 5,
                     borderLeftColor: colors.secondary,
                     borderRightColor: colors.secondary,
-                    borderRightWidth: 5,
                 }}
                 contentContainerStyle={{ paddingHorizontal: 15 }}
                 text1Style={{

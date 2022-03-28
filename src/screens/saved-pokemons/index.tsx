@@ -9,10 +9,14 @@ import SavedPokemons from './components/SavedPokemons';
 import { Wrapper } from '../../components';
 
 const Settings = () => {
-    const savedPokemons = useSelector(selectSavedPokemons).filter((item) => item.name);
+    const savedPokemons = useSelector(selectSavedPokemons);
     return (
         <Wrapper>
-            <FlatList data={savedPokemons} renderItem={({ item }) => <SavedPokemons name={item?.name} />} />
+            <FlatList
+                bounces={false}
+                data={savedPokemons}
+                renderItem={({ item }) => <SavedPokemons pokemon={item} />}
+            />
         </Wrapper>
     );
 };
