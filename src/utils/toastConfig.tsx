@@ -2,8 +2,8 @@ import React from 'react';
 import { BaseToast } from 'react-native-toast-message';
 
 import { fonts } from 'src/theme';
-import { Flex } from 'src/components';
 import { PokeballGrey } from 'src/assets/icons';
+import Flex from 'src/components/shared/Flex';
 
 export const toastConfig = {
     catch: ({ props: { colors, name } }: any) => {

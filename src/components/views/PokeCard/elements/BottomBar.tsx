@@ -2,16 +2,16 @@ import React from 'react';
 import Toast from 'react-native-toast-message';
 import { Portal } from 'react-native-portalize';
 import { useDispatch, useSelector } from 'react-redux';
-import { Button } from 'react-native';
 
 import { PokeballGrey } from 'src/assets/icons';
 import { capitalize } from 'src/utils/capitalize';
-import { Flex, Typography } from 'src/components';
 import { toastConfig } from 'src/utils/toastConfig';
 import { savePokemon, removePokemon } from 'src/redux/slices/pokemons/slice';
 import { selectSavedPokemons, selectSlots } from 'src/redux/slices/pokemons/selectors';
 import { PokemonType } from 'src/redux/slices/pokemons/types';
 
+import Flex from '../../../shared/Flex';
+import Typography from '../../../shared/Typography';
 import { BottomBarProps } from '../types';
 import { BottomBarWrapper, PokeButton } from '../styles';
 
