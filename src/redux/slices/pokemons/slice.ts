@@ -7,7 +7,6 @@ import { PokemonsState } from './types';
 const initialPokemonsState: PokemonsState = {
     pokemons: [],
     slots: 5,
-    xp: 0,
 };
 
 const pokemonsState = createSlice({
@@ -19,7 +18,7 @@ const pokemonsState = createSlice({
         },
         savePokemon(state, action: PayloadAction<any>) {
             if (state.pokemons.length < state.slots) {
-                state.pokemons = [...state.pokemons, action.payload];
+                state.pokemons = [...state.pokemons, { ...action.payload, xp: 0 }];
             }
         },
         removePokemon(state, action: PayloadAction<any>) {

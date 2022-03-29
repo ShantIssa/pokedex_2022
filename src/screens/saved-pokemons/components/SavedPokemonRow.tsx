@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Typography } from 'src/components';
+import { Typography, Flex } from 'src/components';
 import { useImageColors } from 'src/hooks';
 import { PokeballCard } from 'src/assets/icons';
 
@@ -27,6 +27,11 @@ const SavedPokemonRow: React.FC<SavedPokemonsProps> = ({ pokemon }) => {
             </PokeballWrapper>
 
             <PokeImage source={{ uri: img || '' }} />
+            <Flex paddingString="8px" flexDirection="row">
+                <Typography textAlign="center" type="bodyLarge" textStyle={{ color: colors.secondary }}>
+                    XP: {pokemon.xp}
+                </Typography>
+            </Flex>
         </SavedPokemonCard>
     );
 };
