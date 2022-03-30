@@ -12,14 +12,14 @@ import { capitalize } from 'src/utils/capitalize';
 
 import { SavedPokemonsProps } from '../types';
 import {
-    SavedPokemonCard,
     PokeImage,
-    PokeballWrapper,
     TitleWrapper,
     StyledButton,
-    ActionsWrapper,
-    LineInBetween,
     DeleteButton,
+    LineInBetween,
+    ActionsWrapper,
+    PokeballWrapper,
+    SavedPokemonCard,
 } from '../styles';
 
 const SavedPokemonRow: React.FC<SavedPokemonsProps> = ({ pokemon }) => {
@@ -32,9 +32,9 @@ const SavedPokemonRow: React.FC<SavedPokemonsProps> = ({ pokemon }) => {
     const alertHandler = () => {
         Alert.alert(
             `Remove ${capitalize(pokemon.name)}`,
-            `You are about to remove ${capitalize(
-                pokemon.name,
-            )}, you will lose all the XP and History of battles which you've gained`,
+            `You are about to remove ${capitalize(pokemon.name)}, you will lose all the ${
+                pokemon.xp
+            } XP and History of battles which you've gained`,
             [
                 {
                     text: 'Remove',
