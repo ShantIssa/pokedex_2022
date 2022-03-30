@@ -11,7 +11,10 @@ export { default as PokeballGrey } from './header/pokeball_grey.svg';
 
 //Cards
 
+export { default as Compass } from './cards/Compass';
+export { default as Dingtalk } from './cards/Dingtalk';
 export { default as PokeballCard } from './cards/Pokeball';
+export { default as DeleteOutlined } from './cards/DeleteOutlined';
 
 //Navigation
 export { default as LeftArrow } from './navigation/left-one.svg';

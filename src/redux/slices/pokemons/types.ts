@@ -104,12 +104,8 @@ export type PokemonType = {
     stats: Stats[];
     types: Types[];
     weight: number;
-    xp?: number | null | undefined;
+    xp?: number | undefined | null;
 };
-//
-// export type Pokemon = {
-//     pokemon: PokemonType;
-// };
 
 export type PokemonsState = {
     pokemons: PokemonType[];
