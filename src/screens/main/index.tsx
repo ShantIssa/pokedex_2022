@@ -23,6 +23,7 @@ const Main = () => {
         return (
             <FlatList
                 ref={ref}
+                bounces={false}
                 data={data?.pages}
                 maxToRenderPerBatch={5}
                 onEndReachedThreshold={0.4}

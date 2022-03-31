@@ -11,6 +11,7 @@ const PokeCard: React.FC<PokeCardProps> = ({ pokemons }) => {
         () => (
             <FlatList
                 data={pokemons}
+                bounces={false}
                 maxToRenderPerBatch={5}
                 removeClippedSubviews={true}
                 showsVerticalScrollIndicator={false}

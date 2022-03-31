@@ -105,9 +105,15 @@ export type PokemonType = {
     types: Types[];
     weight: number;
     xp?: number | undefined | null;
+    is_training: boolean;
 };
 
 export type PokemonsState = {
     pokemons: PokemonType[];
     slots: number;
+};
+
+export type TrainPokemonType = {
+    name: string;
+    is_training: boolean;
 };
